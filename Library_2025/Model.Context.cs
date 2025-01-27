@@ -19,13 +19,14 @@ namespace Library_2025
             : base("name=Entities")
         {
         }
-    
-        private static Entities _context;
+
+        private  static Entities _context;
         public static Entities GetContext()
         {
             if (_context == null) _context = new Entities();
             return _context;
         }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
