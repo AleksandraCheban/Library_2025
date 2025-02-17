@@ -16,13 +16,18 @@
                 <TextBlock Text="Добро пожаловать!" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
                 <Grid Margin="0 0 0 20">
                     <Button HorizontalAlignment="Left" Content="Регистрация"/>
-                    <Button HorizontalAlignment="Right" Content="Войти"/> 
+                    <Button HorizontalAlignment="Right" Content="Войти"/>
                 </Grid>
-                <TextBox materialDesign:HintAssist.Hint="Введите логин" />
-                <TextBox materialDesign:HintAssist.Hint="Введите пароль" />
-                <TextBox materialDesign:HintAssist.Hint="Повторите пароль" />
-                <TextBox materialDesign:HintAssist.Hint="Email" />
-                <Button Content="Зарегестрироваться" Margin="0 20"/>
+                <TextBox x:Name="textBoxLogin" TextWrapping="Wrap" Text="" Width="490" ToolTip="Введите логин" />
+                <PasswordBox x:Name="passBox"  Width="490" ToolTip="Введите пароль" />
+                <PasswordBox x:Name="passBox_2" Width="490" ToolTip="Повторите пароль" />
+                <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="" Width="490" ToolTip="Email" />
+                
+                <!--<TextBox materialDesign:HintAssist.Hint="Введите логин"  TextWrapping="Wrap" ToolTip="Click to submit your information"   />
+                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" />
+                <PasswordBox materialDesign:HintAssist.Hint="Повторите пароль" />
+                <TextBox materialDesign:HintAssist.Hint="Email" />-->
+                <Button Content="Зарегестрироваться" Margin="0 20" Click="Button_Reg_Click"/>
             </StackPanel>
         </Border>
     </Grid>
