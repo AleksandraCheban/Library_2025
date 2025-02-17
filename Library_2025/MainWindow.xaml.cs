@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,11 @@ namespace Library_2025
         {
             InitializeComponent();
         }
-
+        //public static string GetHash(string password)
+        //{
+        //    using (var hash = SHA1.Create())
+        //    return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+        //}
         
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
