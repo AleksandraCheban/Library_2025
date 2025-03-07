@@ -84,8 +84,14 @@
     <Compile Include="Books.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="BooksPage.xaml.cs">
+      <DependentUpon>BooksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Genres.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Languages.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -98,8 +104,14 @@
     <Compile Include="Orders.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PublishersPage.xaml.cs">
+      <DependentUpon>PublishersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReaderCategories.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -110,6 +122,17 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,6 +145,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PublishersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model.Context.cs">

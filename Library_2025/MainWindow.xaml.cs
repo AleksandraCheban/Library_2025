@@ -133,8 +133,8 @@ namespace Library_2025
 
         private bool isValidMail(object text)
         {
-            throw new NotImplementedException()
-
+            var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+       
         }
     }
 }
