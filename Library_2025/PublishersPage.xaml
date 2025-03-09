@@ -9,6 +9,25 @@
       Title="PublishersPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" Name="DataGridPublishers" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Издателя" Binding="{Binding ID_publishers}" />
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" />
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
         
     </Grid>
 </Page>

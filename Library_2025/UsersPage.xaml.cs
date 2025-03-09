@@ -23,6 +23,36 @@ namespace Library_2025
         public UsersPage()
         {
             InitializeComponent();
+            LoadUsers();
+        }
+
+        private void LoadUsers()
+        {
+            DataGridUsers.ItemsSource = Entities.GetContext().Users
+                .Select(u => new
+                {
+                    u.Surname,
+                    u.Name,
+                    u.Login,
+                    //Role = u.RoleNavigation.Name, // Предполагается, что есть навигационное свойство для роли
+                    u.E_mail,
+                    u.Telephone
+                }).ToList();
+        }
+
+        private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика редактирования пользователя
+        }
+
+        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new AddUser ,Page());
+        //}
+
+        private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика удаления пользователя
         }
     }
 }

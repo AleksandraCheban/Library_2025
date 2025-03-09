@@ -9,6 +9,29 @@
       Title="OrdersPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" Name="DataGridOrders" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Заказа" Binding="{Binding ID_orders}" />
+                <DataGridTextColumn Header="Книга" Binding="{Binding Book.Name}" />
+                <DataGridTextColumn Header="Пользователь" Binding="{Binding User.Name}" />
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" />
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
+                <DataGridTextColumn Header="Итог" Binding="{Binding Result}" />
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
         
     </Grid>
 </Page>

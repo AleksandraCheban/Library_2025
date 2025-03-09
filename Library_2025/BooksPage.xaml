@@ -33,7 +33,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Name="ButtonAdd" Content="Добавить" HorizontalAlignment="Left" Click="ButtonAdd_OnClick" Width="133" Background="White" />
-        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Background="White" />
+       
     </Grid>
 </Page>

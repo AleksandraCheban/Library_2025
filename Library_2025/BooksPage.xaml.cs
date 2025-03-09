@@ -32,10 +32,10 @@ namespace Library_2025
                 .Select(b => new
                 {
                     b.Name,
-                    Author = b.Author, // Предполагается, что есть навигационное свойство для автора
-                    Genre = b.Genre, // Предполагается, что есть навигационное свойство для жанра
-                    Language = b.Language, // Предполагается, что есть навигационное свойство для языка
-                    Publisher = b.Publisher, // Предполагается, что есть навигационное свойство для издателя
+                    //b.Author, // Предполагается, что есть навигационное свойство для автора
+                    //Genre = b.Genre, // Предполагается, что есть навигационное свойство для жанра
+                    //Language = b.Language, // Предполагается, что есть навигационное свойство для языка
+                    //Publisher = b.Publisher, // Предполагается, что есть навигационное свойство для издателя
                     b.Costs,
                     b.Rating
                 }).ToList();
@@ -46,10 +46,10 @@ namespace Library_2025
             // Логика редактирования книги
         }
 
-        private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddBookPage());
-        }
+        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new AddBookPage());
+        //}
 
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
         {

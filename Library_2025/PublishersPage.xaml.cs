@@ -23,6 +23,32 @@ namespace Library_2025
         public PublishersPage()
         {
             InitializeComponent();
+            LoadPublishers();
+        }
+
+        private void LoadPublishers()
+        {
+            DataGridPublishers.ItemsSource = Entities.GetContext().Publishers
+                .Select(p => new
+                {
+                    p.ID_publishers,
+                    p.Title
+                }).ToList();
+        }
+
+        private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика редактирования издателя
+        }
+
+        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+        //{
+         //   NavigationService.Navigate(new AddPublisherPage());
+        //}
+
+        private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика удаления издателя
         }
     }
 }

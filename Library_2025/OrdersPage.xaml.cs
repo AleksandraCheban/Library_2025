@@ -23,6 +23,36 @@ namespace Library_2025
         public OrdersPage()
         {
             InitializeComponent();
+            LoadOrders();
+        }
+
+        private void LoadOrders()
+        {
+            DataGridOrders.ItemsSource = Entities.GetContext().Orders
+                .Select(o => new
+                {
+                    o.ID_orders,
+                    //Book = o.Book, // Предполагается, что есть навигационное свойство для книги
+                    //User = o.User, // Предполагается, что есть навигационное свойство для пользователя
+                    o.Cost,
+                    o.Quantity,
+                    o.Result
+                }).ToList();
+        }
+
+        private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика редактирования заказа
+        }
+
+        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new AddOrderPage());
+        //}
+
+        private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Логика удаления заказа
         }
     }
 }

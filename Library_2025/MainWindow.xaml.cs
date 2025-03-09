@@ -91,13 +91,14 @@ namespace Library_2025
                     if (passBox.Password[i] >= 'A' && passBox.Password[i] <= 'Я') en = false;
                     if (passBox.Password[i] >= '0' && passBox.Password[i] <= '9') number = true;
                 }
-                var regex = new Regex(@"*((\+7))\d{10}$");
+                //var regex = new Regex(@"*((\+7))\d{10}$");
 
                 StringBuilder errors = new StringBuilder();
 
                 if (passBox.Password.Length < 6) errors.AppendLine("Пароль должен быть больше 6 сиmвоnов"); 
                 if (!en) errors.AppendLine("Пароль должен быть на английском языкe");
-                if (!number) errors.AppendLine("Пароль должен содержать хотя бы одну цифру"); if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите кoрректный email");
+                if (!number) errors.AppendLine("Пароль должен содержать хотя бы одну цифру"); 
+                //if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите кoрректный email");
 
                 if (errors.Length > 0)
                 {
@@ -131,10 +132,10 @@ namespace Library_2025
             }
         }
 
-        private bool isValidMail(object text)
-        {
-            var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        //private bool isValidMail(object text)
+        //{
+        //    var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
        
-        }
+        //}
     }
 }
