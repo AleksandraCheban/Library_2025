@@ -35,6 +35,7 @@ namespace Library_2025
             if (string.IsNullOrEmpty(textBoxLogin.Text) || string.IsNullOrEmpty(passBox.Password))
             {
                 MessageBox.Show("Введите логин и пароль!");
+                
                 return;
             }
         }
