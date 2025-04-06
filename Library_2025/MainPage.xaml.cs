@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,95 +35,103 @@ namespace Library_2025
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            //string login = textBoxLogin.Text.Trim();
-            //string pass = passBox.Password.Trim();
-            //string pass_2 = passBox_2.Password.Trim();
-            //string email = textBoxEmail.Text.Trim().ToLower();
-
-            //if (login.Length < 5)
-            //{
-            //    textBoxLogin.ToolTip = "Это поле введено не корректно!";
-            //    textBoxLogin.Background = Brushes.DarkRed;
-            //} else if (pass.Length < 5)
-            //{
-            //    passBox.ToolTip = "Это поле введено не корректно!";
-            //    passBox.Background = Brushes.DarkRed;
-
-            //}
-            //else if (pass != pass_2)
-            //{
-            //    passBox_2.ToolTip = "Это поле введено не корректно!";
-            //    passBox_2.Background = Brushes.DarkRed;
-
-            //}
-            //else if (email.Length<5 || !email.Contains("@") || !email.Contains("."))
-            //{
-            //    textBoxEmail.ToolTip = "Это поле введено не корректно!";
-            //    textBoxEmail.Background = Brushes.DarkRed;
-
-            //}
-            //else
-            //{
-            //    textBoxLogin.ToolTip = "";
-            //    textBoxLogin.Background = Brushes.Transparent;
-            //    passBox.ToolTip = "";
-            //    passBox.Background = Brushes.Transparent;
-            //    passBox_2.ToolTip = "";
-            //    passBox_2.Background = Brushes.Transparent;
-            //    textBoxEmail.ToolTip = "";
-            //    textBoxEmail.Background = Brushes.Transparent;
-
-            //    MessageBox.Show("Все хорошо!");
-
-
-            if (textBoxLogin.Text.Length > 0)
+            // Проверка, что логин не пустой
+            if (textBoxLogin.Text.Length == 0)
             {
-                using (var db = new Entities())
+                MessageBox.Show("Укажите логин!");
+                return;
+            }
+
+            using (var db = new Entities())
+            {
+                // Проверка, существует ли уже пользователь с таким логином
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == textBoxLogin.Text);
+                if (user != null)
                 {
-                    var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == textBoxLogin.Text);
-                    if (user != null) { MessageBox.Show("Пользователь с такими данными уже существует!"); return; }
-                }
-
-                bool en = true;
-                bool number = false;
-                for (int i = 0; 1 < passBox.Password.Length; i++)
-                {
-                    if (passBox.Password[i] >= 'A' && passBox.Password[i] <= 'Я') en = false;
-                    if (passBox.Password[i] >= '0' && passBox.Password[i] <= '9') number = true;
-                }
-                //var regex = new Regex(@"*((\+7))\d{10}$");
-
-                StringBuilder errors = new StringBuilder();
-
-                if (passBox.Password.Length < 6) errors.AppendLine("Пароль должен быть больше 6 сиmвоnов");
-                if (!en) errors.AppendLine("Пароль должен быть на английском языкe");
-                if (!number) errors.AppendLine("Пароль должен содержать хотя бы одну цифру");
-                //if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите кoрректный email");
-
-                if (errors.Length > 0)
-                {
-                    MessageBox.Show(errors.ToString());
+                    MessageBox.Show("Пользователь с такими данными уже существует!");
                     return;
                 }
-                else
+            }
+
+            bool en = true;
+            bool number = false;
+
+            // Проверка пароля на наличие английских букв и цифр
+            for (int i = 0; i < passBox.Password.Length; i++)
+            {
+                if (passBox.Password[i] >= 'A' && passBox.Password[i] <= 'Z')
                 {
-                    Entities db = new Entities();
+                    en = true;
+                }
+                else if (passBox.Password[i] >= '0' && passBox.Password[i] <= '9')
+                {
+                    number = true;
+                }
+            }
+
+            var regex = new Regex(@"^\+7\d{10}$");
+            StringBuilder errors = new StringBuilder();
+
+            // Проверка длины пароля
+            if (passBox.Password.Length < 6)
+            {
+                errors.AppendLine("Пароль должен быть больше 6 символов");
+            }
+
+
+            // Проверка наличия английских букв в пароле
+            if (!en)
+            {
+                errors.AppendLine("Пароль должен содержать хотя бы одну английскую букву");
+            }
+
+            // Проверка наличия цифр в пароле
+            if (!number)
+            {
+                errors.AppendLine("Пароль должен содержать хотя бы одну цифру");
+            }
+
+            // Проверка корректности email
+            if (!isValidMail(textBoxEmail.Text))
+            {
+                errors.AppendLine("Введите корректный email");
+            }
+
+            // Если есть ошибки, показать их
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            else
+            {
+                // Создание нового пользователя и сохранение в базе данных
+                using (var db = new Entities())
+                {
                     Users userObject = new Users
                     {
                         Login = textBoxLogin.Text,
                         Password = GetHash(passBox.Password),
                         Role = 1,
                         E_mail = textBoxEmail.Text,
+                        
                     };
+
                     db.Users.Add(userObject);
                     db.SaveChanges();
-                    MessageBox.Show("Вы успешно зарегистрировались!", "Успешно!", MessageBoxButton.OK);
-                    //NavigationService.Navigate((new Uri("/Pages/AuthLog.xaml", UriKind.Relative)));
                 }
-            }
-            else MessageBox.Show("Укажите лоигн!");
-        }
 
+                MessageBox.Show("Вы успешно зарегистрировались!", "Успешно!", MessageBoxButton.OK);
+                NavigationService.Navigate(new Uri("/Pages/AuthLog.xaml", UriKind.Relative));
+            }
+        }
+        private bool isValidMail(string email)
+        {
+            // Регулярное выражение для проверки корректности email
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            Regex regex = new Regex(emailPattern);
+            return regex.IsMatch(email);
+        }
         public static string GetHash(string password)
         {
             using (var hash = SHA1.Create())

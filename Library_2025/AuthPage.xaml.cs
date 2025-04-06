@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Library_2025.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,15 +29,49 @@ namespace Library_2025
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MainPage());
-        }
-
-        private void ButtonEnter_OnClick(object sender, RoutedEventArgs e)
-        {
+            // Проверка, что логин и пароль не пустые
             if (string.IsNullOrEmpty(textBoxLogin.Text) || string.IsNullOrEmpty(passBox.Password))
             {
                 MessageBox.Show("Введите логин и пароль!");
                 return;
+            }
+
+            string _password = GetHash(passBox.Password);
+
+            using (var db = new Entities())
+            {
+                // Поиск пользователя в базе данных
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == textBoxLogin.Text && u.Password == _password);
+
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь с такими данными не найден!");
+                    return;
+                }
+
+                // Открытие соответствующего окна в зависимости от роли пользователя
+                if (user.Role == 1)
+                {
+                    var newWindow = new HomePage(user);
+                    newWindow.Show();
+                }
+                else
+                {
+                    var newWindow = new var newWindow = new HomePage(user);
+                    (user);
+                    newWindow.Show();
+                }
+
+                // Закрытие текущего окна
+                MainWindow.Close();
+            }
+        }
+
+        public static string GetHash (string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
             }
         }
     }
