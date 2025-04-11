@@ -15,45 +15,60 @@ using System.Windows.Shapes;
 
 namespace Library_2025
 {
-    /// <summary>
-    /// Логика взаимодействия для BooksPage.xaml
-    /// </summary>
+
     public partial class BooksPage : Page
     {
-        public BooksPage()
+        // <summary>
+        /// Логика взаимодействия для ProductsPage.xaml
+        /// </summary>
+        public partial class ProductsPage : Page
         {
-            InitializeComponent();
-            LoadBooks();
-        }
+            public ProductsPage()
+            {
+                InitializeComponent();
+                DataGridProducts.ItemsSource = Entities.GetContext().Products.ToList();
+            }
 
-        private void LoadBooks()
-        {
-            DataGridBooks.ItemsSource = Entities.GetContext().Books
-                .Select(b => new
+            private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+            {
+                // Логика для редактирования продукта
+                // Например, можно открыть страницу редактирования с выбранным продуктом
+                var selectedProduct = DataGridProducts.SelectedItem as Product;
+                if (selectedProduct != null)
                 {
-                    b.Name,
-                    //b.Author, // Предполагается, что есть навигационное свойство для автора
-                    //Genre = b.Genre, // Предполагается, что есть навигационное свойство для жанра
-                    //Language = b.Language, // Предполагается, что есть навигационное свойство для языка
-                    //Publisher = b.Publisher, // Предполагается, что есть навигационное свойство для издателя
-                    b.Costs,
-                    b.Rating
-                }).ToList();
+                    NavigationService.Navigate(new EditProductPage(selectedProduct));
+                }
+            }
+
+            private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+            {
+                NavigationService.Navigate(new AddProductPage());
+            }
+
+            private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
+            {
+                // Логика для удаления продукта
+                var selectedProduct = DataGridProducts.SelectedItem as Product;
+                if (selectedProduct != null)
+                {
+                    var context = Entities.GetContext();
+                    context.Products.Remove(selectedProduct);
+                    context.SaveChanges();
+                    DataGridProducts.ItemsSource = context.Products.ToList();
+                }
+            }
         }
 
-        private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        private static Entities _context;
+
+        public static Entities GetContext()
         {
-            // Логика редактирования книги
+            if (_context == null)
+            {
+                _context = new Entities();
+            }
+            return _context;
         }
 
-        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    NavigationService.Navigate(new AddBookPage());
-        //}
-
-        private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
-        {
-            // Логика удаления книги
-        }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Library_2025.Pages
+namespace Library_2025
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MyOrders.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MyOrders : Page
     {
-        public MainWindow()
+        public MyOrders()
         {
             InitializeComponent();
-            MainFrame.Navigate(new MainPage());
         }
     }
 }

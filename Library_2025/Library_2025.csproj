@@ -84,17 +84,20 @@
     <Compile Include="Availability.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AvailabilityPage.xaml.cs">
+      <DependentUpon>AvailabilityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Books.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BooksBageAdmin.xaml.cs">
+      <DependentUpon>BooksBageAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Genres.cs">
       <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Languages.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -107,11 +110,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyOrders.xaml.cs">
+      <DependentUpon>MyOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="OrdersPage.xaml.cs">
       <DependentUpon>OrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageForAdmin.xaml.cs">
+      <DependentUpon>PageForAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageForClient.xaml.cs">
+      <DependentUpon>PageForClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -135,11 +147,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BooksPage.xaml">
+    <Page Include="AvailabilityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HomePage.xaml">
+    <Page Include="BooksBageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,19 +163,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="MyOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageForClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

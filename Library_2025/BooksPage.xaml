@@ -5,10 +5,40 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Library_2025"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="BooksPage">
-
+           d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="ProductsPage"
+      Background="AliceBlue">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="377*"/>
+            <RowDefinition Height="73*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" Name="DataGridProducts" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="Категория товара" Binding="{Binding ProductCategories.NameOfCategory}" />-->
+                <DataGridTextColumn Header="Название книги" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Автор" Binding="{Binding Author.Name}" />
+                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre.Title}" />
+                <DataGridTextColumn Header="Язык" Binding="{Binding Language.Title}" />
+                <DataGridTextColumn Header="Издатель" Binding="{Binding Publisher.Title}" />
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
+                <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" Name="ButtonAdd" Content="Добавить" HorizontalAlignment="Left" Click="ButtonAdd_OnClick" Width="133" Background="White" />
+        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Background="White" />
+    </Grid>
+</Page>
+
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -35,4 +65,4 @@
 
        
     </Grid>
-</Page>
+</Page>-->

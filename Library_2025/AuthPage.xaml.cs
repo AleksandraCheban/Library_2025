@@ -52,18 +52,18 @@ namespace Library_2025
                 // Открытие соответствующего окна в зависимости от роли пользователя
                 if (user.Role == 1)
                 {
-                    var newWindow = new HomePage(user);
+                    var newWindow = new PageForClient(user);
                     newWindow.Show();
                 }
                 else
                 {
-                    var newWindow = new var newWindow = new HomePage(user);
+                    var newWindow = new var newWindow = new PageForAdmin(user);
                     (user);
                     newWindow.Show();
                 }
 
                 // Закрытие текущего окна
-                MainWindow.Close();
+                AuthPage.Close();
             }
         }
 
