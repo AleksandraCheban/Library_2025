@@ -57,7 +57,7 @@ namespace Library_2025
                 }
                 else
                 {
-                    var newWindow = new var newWindow = new PageForAdmin(user);
+                    var newWindow = new  PageForAdmin(user);
                     (user);
                     newWindow.Show();
                 }
