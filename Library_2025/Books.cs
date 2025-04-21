@@ -28,9 +28,9 @@ namespace Library_2025
         public int ID_publishers { get; set; }
         public int ID_availability { get; set; }
         public int ID_categories { get; set; }
-        public decimal Rating { get; set; }
+        public Nullable<decimal> Rating { get; set; }
         public string Photo { get; set; }
-        public decimal Costs { get; set; }
+        public Nullable<decimal> Costs { get; set; }
     
         public virtual Authors Authors { get; set; }
         public virtual Availability Availability { get; set; }
