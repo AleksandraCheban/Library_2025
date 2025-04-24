@@ -51,7 +51,7 @@ namespace Library_2025
                 var selectedProduct = DataGridProducts.SelectedItem as Product;
                 if (selectedProduct != null)
                 {
-                    var context = Entities.GetContext();
+                    var context = Library_2025Entities.GetContext();
                     context.Products.Remove(selectedProduct);
                     context.SaveChanges();
                     DataGridProducts.ItemsSource = context.Products.ToList();
@@ -59,13 +59,13 @@ namespace Library_2025
             }
         }
 
-        private static Entities _context;
+        private static Library_2025Entities _context;
 
-        public static Entities GetContext()
+        public static Library_2025Entities GetContext()
         {
             if (_context == null)
             {
-                _context = new Entities();
+                _context = new Library_2025Entities();
             }
             return _context;
         }

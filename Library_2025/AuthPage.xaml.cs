@@ -38,7 +38,7 @@ namespace Library_2025
 
             string _password = GetHash(passBox.Password);
 
-            using (var db = new Entities())
+            using (var db = new Library_2025Entities())
             {
                 // Поиск пользователя в базе данных
                 var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == textBoxLogin.Text && u.Password == _password);
