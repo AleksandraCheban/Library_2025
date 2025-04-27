@@ -28,7 +28,7 @@ namespace Library_2025
 
         private void LoadUsers()
         {
-            DataGridUsers.ItemsSource = Entities.GetContext().Users
+            DataGridUsers.ItemsSource = Library_2025Entities.GetContext().Users
                 .Select(u => new
                 {
                     u.Surname,

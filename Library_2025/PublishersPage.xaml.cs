@@ -28,7 +28,7 @@ namespace Library_2025
 
         private void LoadPublishers()
         {
-            DataGridPublishers.ItemsSource = Entities.GetContext().Publishers
+            DataGridPublishers.ItemsSource = Library_2025Entities.GetContext().Publishers
                 .Select(p => new
                 {
                     p.ID_publishers,

@@ -20,9 +20,10 @@ namespace Library_2025
     /// </summary>
     public partial class PageForAdmin : Page
     {
-        public PageForAdmin()
+        public PageForAdmin(Users user)
         {
             InitializeComponent();
+            DataContext = user;
         }
 
         private void Books_Click(object sender, RoutedEventArgs e)

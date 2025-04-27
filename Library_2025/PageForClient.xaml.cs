@@ -20,14 +20,16 @@ namespace Library_2025
     /// </summary>
     public partial class PageForClient : Page
     {
-        public PageForClient()
+        public PageForClient(Users user)
         {
             InitializeComponent();
+            DataContext = user;
         }
 
         private void Books_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new BooksPage());
+
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)

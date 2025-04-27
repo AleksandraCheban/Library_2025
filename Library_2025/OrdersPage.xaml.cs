@@ -28,7 +28,7 @@ namespace Library_2025
 
         private void LoadOrders()
         {
-            DataGridOrders.ItemsSource = Entities.GetContext().Orders
+            DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders
                 .Select(o => new
                 {
                     o.ID_orders,

@@ -1,5 +1,4 @@
-﻿using Library_2025.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -52,18 +51,15 @@ namespace Library_2025
                 // Открытие соответствующего окна в зависимости от роли пользователя
                 if (user.Role == 1)
                 {
-                    var newWindow = new PageForClient(user);
-                    newWindow.Show();
+                    NavigationService.Navigate(new PageForClient(user));
+                    
                 }
                 else
                 {
-                    var newWindow = new  PageForAdmin(user);
-                    (user);
-                    newWindow.Show();
+                    NavigationService.Navigate(new PageForAdmin(user)); ;
                 }
 
-                // Закрытие текущего окна
-                AuthPage.Close();
+          
             }
         }
 
@@ -73,6 +69,11 @@ namespace Library_2025
             {
                 return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Registration());
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Library_2025
                 return;
             }
 
-            using (var db = new Entities())
+            using (var db = new Library_2025Entities())
             {
                 // Проверка, существует ли уже пользователь с таким логином
                 var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == textBoxLogin.Text);
@@ -106,7 +106,7 @@ namespace Library_2025
             else
             {
                 // Создание нового пользователя и сохранение в базе данных
-                using (var db = new Entities())
+                using (var db = new Library_2025Entities())
                 {
                     Users userObject = new Users
                     {

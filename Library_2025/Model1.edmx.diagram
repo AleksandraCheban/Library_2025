@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="28d1d2d05e864ed494841965f7d020cb" Name="Diagram1">
+        <EntityTypeShape EntityType="Library_2025Model.Authors" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Availability" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Books" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Genres" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Languages" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Orders" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Publishers" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.ReaderCategories" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Roles" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Users" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_author__2AD55B43" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_availa__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_catego__2F9A1060" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_genre__2BC97F7C" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_langua__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Books__ID_publis__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Orders__ID_books__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Orders__ID_users__36470DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK__Users__Role__32767D0B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
