@@ -16,7 +16,7 @@
             <StackPanel>
                 <TextBlock Text="Добро пожаловать!" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content="Регистрация" Click="Button_Click_1" />
+                    <Button HorizontalAlignment="Left" Content="Регистрация" Click="Button_Click_1" Style="{StaticResource Button_Common_Style}" />
                 </Grid>
                 <TextBox x:Name="textBoxLogin" TextWrapping="Wrap" Text="" Width="490" ToolTip="Введите логин" />
                 <PasswordBox x:Name="passBox"  Width="490" ToolTip="Введите пароль" />
