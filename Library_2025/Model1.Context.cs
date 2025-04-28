@@ -9,24 +9,20 @@
 
 namespace Library_2025
 {
+
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
     public partial class Library_2025Entities : DbContext
     {
-
         private static Library_2025Entities _context;
-
         public static Library_2025Entities GetContext()
         {
             if (_context == null)
-            {
                 _context = new Library_2025Entities();
-            }
             return _context;
         }
-
         public Library_2025Entities()
             : base("name=Library_2025Entities")
         {
@@ -48,7 +44,5 @@ namespace Library_2025
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-
-
     }
 }

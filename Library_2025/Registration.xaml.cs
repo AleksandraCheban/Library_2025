@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,77 @@ namespace Library_2025
         {
             InitializeComponent();
         }
+
+        private void TextBoxLogin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBoxLogin.Text == "Введите логин")
+            {
+                textBoxLogin.Text = string.Empty;
+                textBoxLogin.Foreground = Brushes.Black; // Установите цвет текста по вашему усмотрению
+            }
+        }
+
+        private void TextBoxLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxLogin.Text))
+            {
+                textBoxLogin.Text = "Введите логин";
+                textBoxLogin.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
+        private void TextBoxPasswordPlaceholder_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxPasswordPlaceholder.Visibility = Visibility.Collapsed;
+            passBox.Visibility = Visibility.Visible;
+            passBox.Focus();
+        }
+
+        private void PassBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(passBox.Password))
+            {
+                passBox.Visibility = Visibility.Collapsed;
+                textBoxPasswordPlaceholder.Visibility = Visibility.Visible;
+                textBoxPasswordPlaceholder.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
+        private void TextBoxPasswordPlaceholder_2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxPasswordPlaceholder_2.Visibility = Visibility.Collapsed;
+            passBox_2.Visibility = Visibility.Visible;
+            passBox_2.Focus();
+        }
+
+        private void PassBox_2_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(passBox_2.Password))
+            {
+                passBox_2.Visibility = Visibility.Collapsed;
+                textBoxPasswordPlaceholder_2.Visibility = Visibility.Visible;
+                textBoxPasswordPlaceholder_2.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
+        private void TextBoxEmail_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBoxEmail.Text == "Email")
+            {
+                textBoxEmail.Text = string.Empty;
+                textBoxEmail.Foreground = Brushes.Black; // Установите цвет текста по вашему усмотрению
+            }
+        }
+
+        private void TextBoxEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxEmail.Text))
+            {
+                textBoxEmail.Text = "Email";
+                textBoxEmail.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
         //public static string GetHash(string password)
         //{
         //    using (var hash = SHA1.Create())
@@ -33,45 +105,7 @@ namespace Library_2025
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            //string login = textBoxLogin.Text.Trim();
-            //string pass = passBox.Password.Trim();
-            //string pass_2 = passBox_2.Password.Trim();
-            //string email = textBoxEmail.Text.Trim().ToLower();
-
-            //if (login.Length < 5)
-            //{
-            //    textBoxLogin.ToolTip = "Это поле введено не корректно!";
-            //    textBoxLogin.Background = Brushes.DarkRed;
-            //} else if (pass.Length < 5)
-            //{
-            //    passBox.ToolTip = "Это поле введено не корректно!";
-            //    passBox.Background = Brushes.DarkRed;
-
-            //}
-            //else if (pass != pass_2)
-            //{
-            //    passBox_2.ToolTip = "Это поле введено не корректно!";
-            //    passBox_2.Background = Brushes.DarkRed;
-
-            //}
-            //else if (email.Length<5 || !email.Contains("@") || !email.Contains("."))
-            //{
-            //    textBoxEmail.ToolTip = "Это поле введено не корректно!";
-            //    textBoxEmail.Background = Brushes.DarkRed;
-
-            //}
-            //else
-            //{
-            //    textBoxLogin.ToolTip = "";
-            //    textBoxLogin.Background = Brushes.Transparent;
-            //    passBox.ToolTip = "";
-            //    passBox.Background = Brushes.Transparent;
-            //    passBox_2.ToolTip = "";
-            //    passBox_2.Background = Brushes.Transparent;
-            //    textBoxEmail.ToolTip = "";
-            //    textBoxEmail.Background = Brushes.Transparent;
-
-            //    MessageBox.Show("Все хорошо!");
+            
 
 
             if (textBoxLogin.Text.Length > 0)
@@ -84,19 +118,24 @@ namespace Library_2025
 
                 bool en = true;
                 bool number = false;
-                for (int i = 0; 1 < passBox.Password.Length; i++)
+                for (int i = 0; i < passBox.Password.Length; i++)
                 {
-                    if (passBox.Password[i] >= 'A' && passBox.Password[i] <= 'Я') en = false;
-                    if (passBox.Password[i] >= '0' && passBox.Password[i] <= '9') number = true;
+                    if ((passBox.Password[i] >= 'A' && passBox.Password[i] <= 'Z') || (passBox.Password[i] >= 'a' && passBox.Password[i] <= 'z'))
+                    {
+                        en = true;
+                    }
+                    if (passBox.Password[i] >= '0' && passBox.Password[i] <= '9')
+                    {
+                        number = true;
+                    }
                 }
-                //var regex = new Regex(@"*((\+7))\d{10}$");
 
                 StringBuilder errors = new StringBuilder();
 
                 if (passBox.Password.Length < 6) errors.AppendLine("Пароль должен быть больше 6 сиmвоnов");
                 if (!en) errors.AppendLine("Пароль должен быть на английском языкe");
                 if (!number) errors.AppendLine("Пароль должен содержать хотя бы одну цифру");
-                //if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите кoрректный email");
+                if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите корректный email");
 
                 if (errors.Length > 0)
                 {
@@ -135,11 +174,12 @@ namespace Library_2025
             NavigationService.Navigate(new AuthPage());
         }
 
-        //private bool isValidMail(object text)
-        //{
-        //    var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        private bool isValidMail(string email)
+        {
+            var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            return regex.IsMatch(email);
+        }
 
-        //}
 
     }
 }

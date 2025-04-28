@@ -57,5 +57,9 @@ namespace Library_2025
                 }
             }
 
+        private void ButtonReturnToMain_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

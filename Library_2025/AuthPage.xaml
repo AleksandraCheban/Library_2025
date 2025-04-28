@@ -18,8 +18,12 @@
                 <Grid Margin="0 0 0 20">
                     <Button HorizontalAlignment="Left" Content="Регистрация" Click="Button_Click_1" Style="{StaticResource Button_Common_Style}" />
                 </Grid>
-                <TextBox x:Name="textBoxLogin" TextWrapping="Wrap" Text="" Width="490" ToolTip="Введите логин" />
-                <PasswordBox x:Name="passBox"  Width="490" ToolTip="Введите пароль" />
+                <TextBox x:Name="textBoxLogin" TextWrapping="Wrap" Text="Введите логин" Width="490"
+                         GotFocus="TextBoxLogin_GotFocus" LostFocus="TextBoxLogin_LostFocus" />
+                <TextBox x:Name="textBoxPasswordPlaceholder" Text="Введите пароль" Width="490"
+                         GotFocus="TextBoxPasswordPlaceholder_GotFocus" />
+                <PasswordBox x:Name="passBox" Width="490" Visibility="Collapsed"
+                             LostFocus="PassBox_LostFocus" />
                 <Button Content="Войти" Margin="0 20" Background="MediumPurple" Foreground="#ffdadada" Click="Button_Click"/>
             </StackPanel>
         </Border>

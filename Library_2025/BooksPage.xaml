@@ -9,36 +9,45 @@
       d:DesignWidth="800"
       Title="ProductsPage"
       Background="AliceBlue">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="377*"/>
-            <RowDefinition Height="73*"/>
-        </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" Name="DataGridProducts" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Header="Категория товара" Binding="{Binding ProductCategories.NameOfCategory}" />-->
-                <DataGridTextColumn Header="Название книги" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Автор" Binding="{Binding Author.Name}" />
-                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre.Title}" />
-                <DataGridTextColumn Header="Язык" Binding="{Binding Language.Title}" />
-                <DataGridTextColumn Header="Издатель" Binding="{Binding Publisher.Title}" />
-                <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
-                <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Grid.Row="1" Name="ButtonAdd" Content="Добавить" HorizontalAlignment="Left" Click="ButtonEdit_OnClick" Width="133" Background="White" />
-        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Background="White" />
+    <Grid Background="#ffdadada">
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="377*"/>
+                    <RowDefinition Height="73*"/>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="0" Name="DataGridProducts" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название книги" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Автор" Binding="{Binding Author.Nickname}" />
+                        <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" />
+                        <DataGridTextColumn Header="Язык" Binding="{Binding Language.Title}" />
+                        <DataGridTextColumn Header="Издатель" Binding="{Binding Publisher.Title}" />
+                        <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
+                        <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_OnClick" Width="133" Background="White" Margin="0,0,10,0"/>
+                    <Button Name="ButtonReturnToMain" Content="Вернуться на главную страницу" Click="ButtonReturnToMain_OnClick" Width="200" Background="White"/>
+                </StackPanel>
+                <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Background="White" />
+            </Grid>
+        </Border>
     </Grid>
 </Page>
 
-    <!--<Grid>
+<!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>

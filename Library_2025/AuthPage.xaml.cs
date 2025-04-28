@@ -26,7 +26,42 @@ namespace Library_2025
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void TextBoxLogin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBoxLogin.Text == "Введите логин")
+            {
+                textBoxLogin.Text = string.Empty;
+                textBoxLogin.Foreground = Brushes.Black; // Установите цвет текста по вашему усмотрению
+            }
+        }
+
+        private void TextBoxLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxLogin.Text))
+            {
+                textBoxLogin.Text = "Введите логин";
+                textBoxLogin.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
+        private void TextBoxPasswordPlaceholder_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxPasswordPlaceholder.Visibility = Visibility.Collapsed;
+            passBox.Visibility = Visibility.Visible;
+            passBox.Focus();
+        }
+
+        private void PassBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(passBox.Password))
+            {
+                passBox.Visibility = Visibility.Collapsed;
+                textBoxPasswordPlaceholder.Visibility = Visibility.Visible;
+                textBoxPasswordPlaceholder.Foreground = Brushes.Gray; // Установите цвет текста-подсказки по вашему усмотрению
+            }
+        }
+
+                private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Проверка, что логин и пароль не пустые
             if (string.IsNullOrEmpty(textBoxLogin.Text) || string.IsNullOrEmpty(passBox.Password))
@@ -56,7 +91,7 @@ namespace Library_2025
                 }
                 else
                 {
-                    NavigationService.Navigate(new PageForAdmin(user)); ;
+                    NavigationService.Navigate(new PageForAdmin(user)); 
                 }
 
           
@@ -75,5 +110,7 @@ namespace Library_2025
         {
             NavigationService.Navigate(new Registration());
         }
+
+
     }
 }
