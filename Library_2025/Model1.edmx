@@ -98,11 +98,21 @@
           <Key>
             <PropertyRef Name="ID_users" />
           </Key>
-          <Property Name="ID_users" Type="int" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="255" />
-          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Role" Type="int" />
-          <Property Name="E_mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="E_mail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users_Temp">
+          <Key>
+            <PropertyRef Name="ID_users" />
+          </Key>
+          <Property Name="ID_users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="E_mail" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Books__ID_author__2AD55B43">
           <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
@@ -200,18 +210,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__Role__32767D0B">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="ID_roles" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище Library_2025ModelContainer">
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
@@ -224,6 +222,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Temp" EntityType="Self.Users_Temp" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Books__ID_author__2AD55B43" Association="Self.FK__Books__ID_author__2AD55B43">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Books" EntitySet="Books" />
@@ -255,10 +254,6 @@
           <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__Role__32767D0B" Association="Self.FK__Users__Role__32767D0B">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -359,7 +354,6 @@
           </Key>
           <Property Name="ID_roles" Type="Int32" Nullable="false" />
           <Property Name="Roles1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Role__32767D0B" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -375,13 +369,22 @@
           <Key>
             <PropertyRef Name="ID_users" />
           </Key>
-          <Property Name="ID_users" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="Int32" />
-          <Property Name="E_mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_users__36470DEF" FromRole="Users" ToRole="Orders" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK__Users__Role__32767D0B" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Users_Temp">
+          <Key>
+            <PropertyRef Name="ID_users" />
+          </Key>
+          <Property Name="ID_users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Books__ID_author__2AD55B43">
           <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
@@ -479,18 +482,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__Role__32767D0B">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="ID_roles" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Library_2025Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authors" EntityType="Self.Authors" />
           <EntitySet Name="Availability" EntityType="Self.Availability" />
@@ -503,6 +494,7 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Users_Temp" EntityType="Self.Users_Temp" />
           <AssociationSet Name="FK__Books__ID_author__2AD55B43" Association="Self.FK__Books__ID_author__2AD55B43">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Books" EntitySet="Books" />
@@ -534,10 +526,6 @@
           <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__Role__32767D0B" Association="Self.FK__Users__Role__32767D0B">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -648,6 +636,17 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Library_2025Model.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_users" ColumnName="ID_users" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Temp">
+            <EntityTypeMapping TypeName="Library_2025Model.Users_Temp">
+              <MappingFragment StoreEntitySet="Users_Temp">
                 <ScalarProperty Name="ID_users" ColumnName="ID_users" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

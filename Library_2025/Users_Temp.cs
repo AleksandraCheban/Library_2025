@@ -12,21 +12,12 @@ namespace Library_2025
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Users_Temp
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Orders = new HashSet<Orders>();
-        }
-    
         public int ID_users { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> Role { get; set; }
         public string E_mail { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
     }
 }
