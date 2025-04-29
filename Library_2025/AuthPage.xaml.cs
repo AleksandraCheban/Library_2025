@@ -25,7 +25,7 @@ namespace Library_2025
         {
             InitializeComponent();
         }
-
+        
         private void TextBoxLogin_GotFocus(object sender, RoutedEventArgs e)
         {
             if (textBoxLogin.Text == "Введите логин")
