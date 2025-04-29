@@ -22,10 +22,10 @@
                 <DataGrid Grid.Row="0" Name="DataGridProducts" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Название книги" Binding="{Binding Name}" />
-                        <DataGridTextColumn Header="Автор" Binding="{Binding Author.Nickname}" />
-                        <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" />
-                        <DataGridTextColumn Header="Язык" Binding="{Binding Language.Title}" />
-                        <DataGridTextColumn Header="Издатель" Binding="{Binding Publisher.Title}" />
+                        <DataGridTextColumn Header="Автор" Binding="{Binding Authors.Surname}" />
+                        <DataGridTextColumn Header="Жанр" Binding="{Binding Genres.Genre}" />
+                        <DataGridTextColumn Header="Язык" Binding="{Binding Languages.Title}" />
+                        <DataGridTextColumn Header="Издатель" Binding="{Binding Publishers.Title}" />
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
                         <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
                         <DataGridTemplateColumn Width="*">

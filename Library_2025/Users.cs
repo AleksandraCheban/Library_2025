@@ -11,7 +11,9 @@ namespace Library_2025
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +21,10 @@ namespace Library_2025
         {
             this.Orders = new HashSet<Orders>();
         }
-    
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int ID_users { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }

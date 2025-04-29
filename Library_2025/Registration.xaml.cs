@@ -97,17 +97,8 @@ namespace Library_2025
             }
         }
 
-        //public static string GetHash(string password)
-        //{
-        //    using (var hash = SHA1.Create())
-        //    return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
-        //}
-
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
-            
-
-
             if (textBoxLogin.Text.Length > 0)
             {
                 using (var db = new Library_2025Entities())
@@ -132,8 +123,8 @@ namespace Library_2025
 
                 StringBuilder errors = new StringBuilder();
 
-                if (passBox.Password.Length < 6) errors.AppendLine("Пароль должен быть больше 6 сиmвоnов");
-                if (!en) errors.AppendLine("Пароль должен быть на английском языкe");
+                if (passBox.Password.Length < 6) errors.AppendLine("Пароль должен быть больше 6 символов");
+                if (!en) errors.AppendLine("Пароль должен быть на английском языке");
                 if (!number) errors.AppendLine("Пароль должен содержать хотя бы одну цифру");
                 if (!isValidMail(textBoxEmail.Text)) errors.AppendLine("Введите корректный email");
 
@@ -144,21 +135,24 @@ namespace Library_2025
                 }
                 else
                 {
-                    Library_2025Entities db = new Library_2025Entities();
-                    Users userObject = new Users
+                    using (var db = new Library_2025Entities())
                     {
-                        Login = textBoxLogin.Text,
-                        Password = GetHash(passBox.Password),
-                        Role = 1,
-                        E_mail = textBoxEmail.Text,
-                    };
-                    db.Users.Add(userObject);
-                    db.SaveChanges();
+                        Users userObject = new Users
+                        {
+                            Login = textBoxLogin.Text,
+                            Password = GetHash(passBox.Password),
+                            Role = 1,
+                            E_mail = textBoxEmail.Text,
+                            // Не устанавливайте значение первичного ключа вручную
+                        };
+                        db.Users.Add(userObject);
+                        db.SaveChanges();
+                    }
                     MessageBox.Show("Вы успешно зарегистрировались!", "Успешно!", MessageBoxButton.OK);
                     //NavigationService.Navigate((new Uri("/Pages/AuthLog.xaml", UriKind.Relative)));
                 }
             }
-            else MessageBox.Show("Укажите лоигн!");
+            else MessageBox.Show("Укажите логин!");
         }
 
         public static string GetHash(string password)
@@ -179,7 +173,5 @@ namespace Library_2025
             var regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
             return regex.IsMatch(email);
         }
-
-
     }
 }
