@@ -7,23 +7,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
         Title="PageForClient"
-  Background="White">
-    <!-- Установите фоновый цвет для Page -->
+    Background="#ffdadada">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Button x:Name="Books" Content="Книги" Grid.Row="0" Width="133" Background="White" Click="Books_Click" />
-        <Button x:Name="Orders" Content="Заказы" Grid.Row="1" Width="133" Background="White" Click="Orders_Click" />
-        <Button x:Name="Auth" Content="Сменить пользователя" Grid.Row="4" Width="133" Background="White" Click="Auth_Click" />
-        <Button x:Name="Availability" Content="Наличие" Grid.Row="3" Width="133" Background="White" Click="Availability_Click" />
-        <Button x:Name="Users" Content="Пользователи" Grid.Row="2" Width="133" Background="White" Click="Availability_Click" />
-
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Меню администратора" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
+                <Button x:Name="Books" Content="Книги" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Books_Click" />
+                <Button x:Name="Orders" Content="Заказы" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Orders_Click" />
+                <Button x:Name="Users" Content="Пользователи" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Users_Click" />
+                <Button x:Name="Availability" Content="Наличие" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Availability_Click" />
+                <Button x:Name="Auth" Content="Сменить пользователя" Width="400" Height="50" Margin="0 10 0 0" Click="Auth_Click" Style="{StaticResource Button_Common_Style}" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>
