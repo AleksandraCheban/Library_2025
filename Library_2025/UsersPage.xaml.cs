@@ -31,12 +31,11 @@ namespace Library_2025
             DataGridUsers.ItemsSource = Library_2025Entities.GetContext().Users
                 .Select(u => new
                 {
-                    u.Surname,
-                    u.Name,
+                    
+                    
                     u.Login,
                     //Role = u.RoleNavigation.Name, // Предполагается, что есть навигационное свойство для роли
-                    u.E_mail,
-                    u.Telephone
+                    u.E_mail
                 }).ToList();
         }
 
