@@ -16,8 +16,8 @@
             </Border.Effect>
             <StackPanel>
                 <TextBlock Text="Меню клиента" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
-                <Button x:Name="Books" Content="Книги" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Books_Click" />
-                <Button x:Name="Orders" Content="Заказы" Width="400" Height="50" Margin="0 10 0 0" Background="MediumPurple" Foreground="White" Click="Orders_Click" />
+                <Button x:Name="Books" Content="Книги" Width="400" Height="50" Margin="0 10 0 0" Style="{StaticResource Button_Purple_Style}" Click="Books_Click" />
+                <Button x:Name="Orders" Content="Заказы" Width="400" Height="50" Margin="0 10 0 0" Style="{StaticResource Button_Purple_Style}" Click="Orders_Click" />
                 <Button x:Name="Auth" Content="Сменить пользователя" Width="400" Height="50" Margin="0 10 0 0"  Click="Auth_Click"  Style="{StaticResource Button_Common_Style}" />
             </StackPanel>
         </Border>

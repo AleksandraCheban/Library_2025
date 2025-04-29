@@ -30,7 +30,7 @@
                              LostFocus="PassBox_2_LostFocus" />
                 <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="Email" Width="490"
                          GotFocus="TextBoxEmail_GotFocus" LostFocus="TextBoxEmail_LostFocus" />
-                <Button Content="Зарегистрироваться" Margin="0 20" Click="Button_Reg_Click" Background="MediumPurple" Foreground="#ffdadada"/>
+                <Button Content="Зарегистрироваться" Margin="0 20" Click="Button_Reg_Click" Style="{StaticResource Button_Purple_Style}"/>
             </StackPanel>
         </Border>
     </Grid>

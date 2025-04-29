@@ -28,10 +28,15 @@ namespace Library_2025
 
         private void Books_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new BooksBageAdmin());
+            NavigationService.Navigate(new BooksPage());
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OrdersPage());
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new UsersPage());
         }
