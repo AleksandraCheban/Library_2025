@@ -38,10 +38,9 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_OnClick" Width="133" Background="White" Margin="0,0,10,0"/>
-                    <Button Name="ButtonReturnToMain" Content="Вернуться на главную страницу" Click="ButtonReturnToMain_OnClick" Width="200" Background="White"/>
+                    <Button Name="ButtonAdd" Content="Добавить в корзину" Click="ButtonEdit_OnClick" Width="200" Style="{StaticResource Button_Common_Style}" Margin="0,0,10,0"/>
+                    <Button Name="ButtonReturnToMain" Content="Вернуться на главную страницу" Click="ButtonReturnToMain_OnClick" Width="250" Style="{StaticResource Button_Common_Style}"/>
                 </StackPanel>
-                <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Background="White" />
             </Grid>
         </Border>
     </Grid>

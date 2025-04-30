@@ -44,18 +44,7 @@ namespace Library_2025
                 //NavigationService.Navigate(new AddProductPage());
             }
 
-            private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
-            {
-                // Логика для удаления продукта
-                var selectedProduct = DataGridProducts.SelectedItem as Books;
-                if (selectedProduct != null)
-                {
-                    var context = Library_2025Entities.GetContext();
-                    context.Books.Remove(selectedProduct);
-                    context.SaveChanges();
-                    DataGridProducts.ItemsSource = context.Books.ToList();
-                }
-            }
+            
 
         private void ButtonReturnToMain_OnClick(object sender, RoutedEventArgs e)
         {

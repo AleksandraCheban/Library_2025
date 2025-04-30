@@ -6,9 +6,41 @@
       xmlns:local="clr-namespace:Library_2025"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="BooksBageAdmin">
-
-    <Grid>
-        
+      Title="BooksBageAdmin"      Background="AliceBlue">
+    <Grid Background="#ffdadada">
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="377*"/>
+                    <RowDefinition Height="73*"/>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="0" Name="DataGridProducts" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название книги" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Автор" Binding="{Binding Authors.Surname}" />
+                        <DataGridTextColumn Header="Жанр" Binding="{Binding Genres.Genre}" />
+                        <DataGridTextColumn Header="Язык" Binding="{Binding Languages.Title}" />
+                        <DataGridTextColumn Header="Издатель" Binding="{Binding Publishers.Title}" />
+                        <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
+                        <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Background="White" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_OnClick" Width="133" Style="{StaticResource Button_Common_Style}" Margin="0,0,10,0"/>
+                    <Button Name="ButtonReturnToMain" Content="Вернуться на главную страницу" Click="ButtonReturnToMain_OnClick" Width="250" Style="{StaticResource Button_Common_Style}"/>
+                </StackPanel>
+                <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Style="{StaticResource Button_Common_Style}" />
+            </Grid>
+        </Border>
     </Grid>
 </Page>

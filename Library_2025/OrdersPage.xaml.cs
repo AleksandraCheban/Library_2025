@@ -42,17 +42,33 @@ namespace Library_2025
 
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            // Логика редактирования заказа
+            var selectedOrder = DataGridOrders.SelectedItem as Orders;
+            if (selectedOrder != null)
+            {
+                // NavigationService.Navigate(new EditOrderPage(selectedOrder));
+            }
         }
 
-        //private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    NavigationService.Navigate(new AddOrderPage());
-        //}
+        private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
+        {
+            // NavigationService.Navigate(new AddOrderPage());
+        }
 
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
         {
-            // Логика удаления заказа
+            var selectedOrder = DataGridOrders.SelectedItem as Orders;
+            if (selectedOrder != null)
+            {
+                var context = Library_2025Entities.GetContext();
+                context.Orders.Remove(selectedOrder);
+                context.SaveChanges();
+                DataGridOrders.ItemsSource = context.Orders.ToList();
+            }
+        }
+
+        private void ButtonReturnToMain_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }
