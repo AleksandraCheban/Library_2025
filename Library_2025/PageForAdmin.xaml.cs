@@ -43,7 +43,7 @@ namespace Library_2025
 
         private void Availability_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AvailabilityPage());
+            NavigationService.Navigate(new AddForOrdersUsers(null));
         }
 
         private void Auth_Click(object sender, RoutedEventArgs e)

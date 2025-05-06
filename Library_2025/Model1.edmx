@@ -77,6 +77,17 @@
           <Property Name="ID_categories" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ReviewText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="ReviewDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="ID_roles" />
@@ -210,6 +221,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Reviews__BookID__6D9742D9">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="ID_books" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__UserID__6E8B6712">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_users" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Library_2025ModelContainer">
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
@@ -219,6 +254,7 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReaderCategories" EntityType="Self.ReaderCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -254,6 +290,14 @@
           <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__BookID__6D9742D9" Association="Self.FK__Reviews__BookID__6D9742D9">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__UserID__6E8B6712" Association="Self.FK__Reviews__UserID__6E8B6712">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -302,6 +346,7 @@
           <NavigationProperty Name="Languages" Relationship="Self.FK__Books__ID_langua__2CBDA3B5" FromRole="Books" ToRole="Languages" />
           <NavigationProperty Name="Publishers" Relationship="Self.FK__Books__ID_publis__2DB1C7EE" FromRole="Books" ToRole="Publishers" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_books__3552E9B6" FromRole="Books" ToRole="Orders" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__BookID__6D9742D9" FromRole="Books" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="Genres">
           <Key>
@@ -348,6 +393,19 @@
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="Self.FK__Books__ID_catego__2F9A1060" FromRole="ReaderCategories" ToRole="Books" />
         </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Reviews__BookID__6D9742D9" FromRole="Reviews" ToRole="Books" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Reviews__UserID__6E8B6712" FromRole="Reviews" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="ID_roles" />
@@ -375,6 +433,7 @@
           <Property Name="Role" Type="Int32" />
           <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_users__36470DEF" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__UserID__6E8B6712" FromRole="Users" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="Users_Temp">
           <Key>
@@ -470,6 +529,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Reviews__BookID__6D9742D9">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="ID_books" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Orders__ID_users__36470DEF">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -482,6 +553,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Reviews__UserID__6E8B6712">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_users" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Library_2025Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Authors" EntityType="Self.Authors" />
           <EntitySet Name="Availability" EntityType="Self.Availability" />
@@ -491,6 +574,7 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="Publishers" EntityType="Self.Publishers" />
           <EntitySet Name="ReaderCategories" EntityType="Self.ReaderCategories" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
@@ -523,9 +607,17 @@
             <End Role="Books" EntitySet="Books" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK__Reviews__BookID__6D9742D9" Association="Self.FK__Reviews__BookID__6D9742D9">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
           <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__UserID__6E8B6712" Association="Self.FK__Reviews__UserID__6E8B6712">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -611,6 +703,18 @@
               <MappingFragment StoreEntitySet="ReaderCategories">
                 <ScalarProperty Name="ID_categories" ColumnName="ID_categories" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="Library_2025Model.Reviews">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -51,7 +51,7 @@ namespace Library_2025
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            // NavigationService.Navigate(new AddOrderPage());
+             NavigationService.Navigate(new AddForOrdersUsers(null));
         }
 
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)

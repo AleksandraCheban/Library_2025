@@ -22,6 +22,7 @@ namespace Library_2025
                 _context = new Library_2025Entities();
             return _context;
         }
+
         public Library_2025Entities()
             : base("name=Library_2025Entities")
         {
@@ -40,6 +41,7 @@ namespace Library_2025
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Publishers> Publishers { get; set; }
         public virtual DbSet<ReaderCategories> ReaderCategories { get; set; }
+        public virtual DbSet<Reviews> Reviews { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }

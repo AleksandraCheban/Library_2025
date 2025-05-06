@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddForOrdersUsers.xaml.cs">
+      <DependentUpon>AddForOrdersUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -85,9 +88,6 @@
     </Compile>
     <Compile Include="Availability.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AvailabilityPage.xaml.cs">
-      <DependentUpon>AvailabilityPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Books.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -155,6 +155,9 @@
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reviews.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -170,11 +173,11 @@
     <Compile Include="Users_Temp.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="AuthPage.xaml">
+    <Page Include="AddForOrdersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AvailabilityPage.xaml">
+    <Page Include="AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
