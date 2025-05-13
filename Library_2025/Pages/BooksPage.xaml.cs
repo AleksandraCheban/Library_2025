@@ -30,13 +30,7 @@ namespace Library_2025
 
             private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
             {
-                // Логика для редактирования продукта
-                // Например, можно открыть страницу редактирования с выбранным продуктом
-                var selectedProduct = DataGridProducts.SelectedItem as Books;
-                if (selectedProduct != null)
-                {
-                    //NavigationService.Navigate(new EditProductPage(selectedProduct)); 
-                }
+
             }
 
             private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)

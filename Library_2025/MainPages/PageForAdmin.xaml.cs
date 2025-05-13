@@ -41,10 +41,6 @@ namespace Library_2025
             NavigationService.Navigate(new UsersPage());
         }
 
-        private void Availability_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddForOrdersUsers(null));
-        }
 
         private void Auth_Click(object sender, RoutedEventArgs e)
         {

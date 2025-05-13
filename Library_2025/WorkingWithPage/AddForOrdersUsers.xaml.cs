@@ -1,66 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Windows;
-//using System.Windows.Controls;
-
-//namespace Library_2025
-//{
-//    public partial class AddForOrdersUsers : Page
-//    {
-//        private Orders _order = new Orders();
-
-//        public AddForOrdersUsers(Orders selectedOrder)
-//        {
-//            InitializeComponent();
-//            if (selectedOrder != null)
-//            {
-//                _order = selectedOrder;
-//            }
-//            DataContext = _order;
-
-//            // Загрузка списка книг
-//            var books = Library_2025Entities.GetContext().Books.ToList();
-//            CmbCategory.ItemsSource = books;
-//        }
-
-//        private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
-//        {
-//            StringBuilder errors = new StringBuilder();
-
-//            if (_order.Books == null)
-//            {
-//                errors.AppendLine("Выберите книгу!");
-//            }
-
-//            if (errors.Length > 0)
-//            {
-//                MessageBox.Show(errors.ToString());
-//                return;
-//            }
-
-//            try
-//            {
-//                if (_order.ID_orders == 0)
-//                {
-//                    Library_2025Entities.GetContext().Orders.Add(_order);
-//                }
-
-//                Library_2025Entities.GetContext().SaveChanges();
-//                MessageBox.Show("Данные успешно сохранены");
-//                NavigationService.GoBack();
-//            }
-//            catch (Exception ex)
-//            {
-//                // Логирование ошибки
-//                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}\n{ex.InnerException?.Message}");
-//            }
-//        }
-//    }
-//}
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -83,17 +21,24 @@ namespace Library_2025
             if (selectedOrder != null)
             {
                 _order = selectedOrder;
-                CmbBooks.SelectedItem = _order.Books;
-                CmbUsers.SelectedItem = _order.Users;
-                TbQuantity.Text = _order.Quantity?.ToString();
-                TbCost.Text = _order.Cost?.ToString();
-                TbResult.Text = _order.Result?.ToString();
             }
             else
             {
                 _order = new Orders();
             }
+
+            DataContext = _order;
         }
+
+        //private void BooksPage_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (Visibility == Visibility.Visible)
+        //    {
+        //        Library_2025Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+        //        DataGridProducts.ItemsSourde = Library_2025Entities.GetContext().Products.ToList();
+        //    }
+        //}
+
 
         private void TbQuantityOrCost_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -114,12 +59,10 @@ namespace Library_2025
         {
             StringBuilder errors = new StringBuilder();
 
-            var selectedBook = CmbBooks.SelectedItem as Books;
-            if (selectedBook == null)
+            if (_order.Books == null)
                 errors.AppendLine("Выберите книгу!");
 
-            var selectedUser = CmbUsers.SelectedItem as Users;
-            if (selectedUser == null)
+            if (_order.Users == null)
                 errors.AppendLine("Выберите пользователя!");
 
             if (!int.TryParse(TbQuantity.Text, out int quantity) || quantity <= 0)
@@ -137,8 +80,6 @@ namespace Library_2025
                 return;
             }
 
-            _order.ID_books = selectedBook.ID_books;
-            _order.ID_users = selectedUser.ID_users;
             _order.Quantity = quantity;
             _order.Cost = cost;
             _order.Result = result;
@@ -152,6 +93,16 @@ namespace Library_2025
                 }
                 context.SaveChanges();
                 MessageBox.Show("Данные успешно сохранены");
+
+                // Сброс формы после сохранения
+                _order = new Orders();
+                DataContext = _order;
+                CmbBooks.SelectedItem = null;
+                CmbUsers.SelectedItem = null;
+                TbQuantity.Text = string.Empty;
+                TbCost.Text = string.Empty;
+                TbResult.Text = string.Empty;
+
                 NavigationService.GoBack();
             }
             catch (Exception ex)

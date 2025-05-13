@@ -77,13 +77,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddForOrdersUsers.xaml.cs">
+    <Compile Include="WorkingWithPage\AddForOrdersUsers.xaml.cs">
       <DependentUpon>AddForOrdersUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddReviewPage.xaml.cs">
+      <DependentUpon>AddReviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AuthPage.xaml.cs">
+    <Compile Include="MainPages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Availability.cs">
@@ -92,14 +98,11 @@
     <Compile Include="Books.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="BooksBageAdmin.xaml.cs">
+    <Compile Include="Pages\BooksBageAdmin.xaml.cs">
       <DependentUpon>BooksBageAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BooksPage.xaml.cs">
+    <Compile Include="Pages\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditProductPage.xaml.cs">
-      <DependentUpon>EditProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Genres.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -107,7 +110,7 @@
     <Compile Include="Languages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="MainPages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -128,35 +131,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MyOrders.xaml.cs">
+    <Compile Include="Pages\MyOrders.xaml.cs">
       <DependentUpon>MyOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrdersPage.xaml.cs">
+    <Compile Include="Pages\OrdersPage.xaml.cs">
       <DependentUpon>OrdersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageForAdmin.xaml.cs">
+    <Compile Include="MainPages\PageForAdmin.xaml.cs">
       <DependentUpon>PageForAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageForClient.xaml.cs">
+    <Compile Include="MainPages\PageForClient.xaml.cs">
       <DependentUpon>PageForClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="PublishersPage.xaml.cs">
-      <DependentUpon>PublishersPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ReaderCategories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Registration.xaml.cs">
+    <Compile Include="MainPages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reviews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reviews.xaml.cs">
+      <DependentUpon>Reviews.xaml</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -167,25 +170,33 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersPage.xaml.cs">
+    <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users_Temp.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="AddForOrdersUsers.xaml">
+    <Page Include="WorkingWithPage\AddForOrdersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AuthPage.xaml">
+    <Page Include="WorkingWithPage\AddReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BooksBageAdmin.xaml">
+    <Page Include="WorkingWithPage\AddUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BooksPage.xaml">
+    <Page Include="MainPages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BooksBageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,11 +204,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditProductPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="MainPages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,31 +216,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyOrders.xaml">
+    <Page Include="Pages\MyOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OrdersPage.xaml">
+    <Page Include="Pages\OrdersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageForAdmin.xaml">
+    <Page Include="MainPages\PageForAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageForClient.xaml">
+    <Page Include="MainPages\PageForClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PublishersPage.xaml">
+    <Page Include="MainPages\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Registration.xaml">
+    <Page Include="Pages\Reviews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsersPage.xaml">
+    <Page Include="Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,6 +15,7 @@ namespace Library_2025
     
     public partial class Library_2025Entities : DbContext
     {
+
         private static Library_2025Entities _context;
         public static Library_2025Entities GetContext()
         {
@@ -27,6 +28,7 @@ namespace Library_2025
             : base("name=Library_2025Entities")
         {
         }
+
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

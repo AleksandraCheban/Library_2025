@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3acfbb171a184248bc25481fffe04262" Name="Diagram1">
-        <EntityTypeShape EntityType="Library_2025Model.Authors" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Availability" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Books" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Genres" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Languages" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+      <Diagram DiagramId="2e0e3a9c83ad455c997d9ceedd9abb09" Name="Diagram1">
+        <EntityTypeShape EntityType="Library_2025Model.Authors" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Availability" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Books" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Genres" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Languages" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Library_2025Model.Orders" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Publishers" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.ReaderCategories" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Reviews" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Publishers" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.ReaderCategories" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Reviews" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Library_2025Model.Roles" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Library_2025Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Users" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Users" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="Library_2025Model.Users_Temp" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_author__2AD55B43" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_availa__2EA5EC27" ManuallyRouted="false" />

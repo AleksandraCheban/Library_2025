@@ -1,0 +1,51 @@
+﻿<Page x:Class="Library_2025.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Library_2025"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddUserPage" Background="AliceBlue">
+
+    <Grid Background="#ffdadada">
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TxtBox_Login" Text="{Binding Login}" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0"/>
+                <PasswordBox Name="PwdBox_Password" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="E-mail" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TxtBox_Email" Text="{Binding E_mail}" Grid.Row="2" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Роль" Grid.Row="3" Grid.Column="0" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbRole" Grid.Row="3" Grid.Column="1" Margin="0,10,0,0">
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                </ComboBox>
+
+                <Button Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" Grid.Row="6" Grid.Column="1" Width="133" Background="White" Margin="0,20,0,0"/>
+                <Button Name="GoBackButton" Content="Назад" Click="GoBackButton_Click" Grid.Row="6" Grid.Column="0" Width="133" Background="White" Margin="0,20,0,0"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

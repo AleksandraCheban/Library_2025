@@ -37,6 +37,11 @@ namespace Library_2025
             NavigationService.Navigate(new MyOrders());
         }
 
+        private void Reviews_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Reviews());
+        }
+
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите сменить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);

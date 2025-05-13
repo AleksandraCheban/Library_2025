@@ -62,6 +62,7 @@
           <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Result" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ID_orders_new" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Publishers">
           <Key>
@@ -374,6 +375,7 @@
           <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Result" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ID_orders_new" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Books" Relationship="Self.FK__Orders__ID_books__3552E9B6" FromRole="Orders" ToRole="Books" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__ID_users__36470DEF" FromRole="Orders" ToRole="Users" />
         </EntityType>
@@ -687,6 +689,7 @@
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="ID_orders_new" ColumnName="ID_orders_new" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
