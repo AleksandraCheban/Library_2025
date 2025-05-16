@@ -17,7 +17,6 @@ namespace Library_2025
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.Orders = new HashSet<Orders>();
             this.Reviews = new HashSet<Reviews>();
         }
     
@@ -28,8 +27,7 @@ namespace Library_2025
         public string E_mail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reviews> Reviews { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

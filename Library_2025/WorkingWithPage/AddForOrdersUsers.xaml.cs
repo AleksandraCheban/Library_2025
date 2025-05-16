@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -9,14 +10,17 @@ namespace Library_2025
     public partial class AddForOrdersUsers : Page
     {
         private Orders _order;
+        private readonly Library_2025Entities _context;
 
         public AddForOrdersUsers(Orders selectedOrder)
         {
             InitializeComponent();
 
-            var context = Library_2025Entities.GetContext();
-            CmbBooks.ItemsSource = context.Books.ToList();
-            CmbUsers.ItemsSource = context.Users.ToList();
+            _context = Library_2025Entities.GetContext();
+            CmbBooks.ItemsSource = _context.Books.ToList();
+            CmbUsers.ItemsSource = _context.Users.ToList();
+
+            
 
             if (selectedOrder != null)
             {
@@ -59,10 +63,10 @@ namespace Library_2025
         {
             StringBuilder errors = new StringBuilder();
 
-            if (_order.Books == null)
+            if (_context.Books == null)
                 errors.AppendLine("Выберите книгу!");
 
-            if (_order.Users == null)
+            if (_context.Users == null)
                 errors.AppendLine("Выберите пользователя!");
 
             if (!int.TryParse(TbQuantity.Text, out int quantity) || quantity <= 0)
@@ -86,12 +90,9 @@ namespace Library_2025
 
             try
             {
-                var context = Library_2025Entities.GetContext();
-                if (_order.ID_orders == 0)
-                {
-                    context.Orders.Add(_order);
-                }
-                context.SaveChanges();
+                Debug.WriteLine(_order.ID_orders);
+                _context.Orders.Add(_order);
+                _context.SaveChanges();
                 MessageBox.Show("Данные успешно сохранены");
 
                 // Сброс формы после сохранения

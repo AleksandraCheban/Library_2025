@@ -21,8 +21,6 @@ namespace Library_2025
         public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> Result { get; set; }
         public int ID_orders_new { get; set; }
-    
-        public virtual Books Books { get; set; }
-        public virtual Users Users { get; set; }
+        public Nullable<int> NewColumn { get; set; }
     }
 }

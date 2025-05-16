@@ -28,7 +28,6 @@ namespace Library_2025
             : base("name=Library_2025Entities")
         {
         }
-
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,6 +46,5 @@ namespace Library_2025
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Users_Temp> Users_Temp { get; set; }
     }
 }

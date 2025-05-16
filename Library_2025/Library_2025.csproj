@@ -77,20 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="WorkingWithPage\AddForOrdersUsers.xaml.cs">
-      <DependentUpon>AddForOrdersUsers.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkingWithPage\AddReviewPage.xaml.cs">
-      <DependentUpon>AddReviewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkingWithPage\AddUserPage.xaml.cs">
-      <DependentUpon>AddUserPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MainPages\AuthPage.xaml.cs">
-      <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Availability.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -98,23 +86,11 @@
     <Compile Include="Books.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BooksBageAdmin.xaml.cs">
-      <DependentUpon>BooksBageAdmin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\BooksPage.xaml.cs">
-      <DependentUpon>BooksPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Genres.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Languages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MainPages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -131,20 +107,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyOrders.xaml.cs">
-      <DependentUpon>MyOrders.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\OrdersPage.xaml.cs">
-      <DependentUpon>OrdersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPages\PageForAdmin.xaml.cs">
-      <DependentUpon>PageForAdmin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPages\PageForClient.xaml.cs">
-      <DependentUpon>PageForClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -152,14 +116,8 @@
     <Compile Include="ReaderCategories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainPages\Registration.xaml.cs">
-      <DependentUpon>Registration.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Reviews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Reviews.xaml.cs">
-      <DependentUpon>Reviews.xaml</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -170,11 +128,50 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="WorkingWithPage\AddForOrdersUsers.xaml.cs">
+      <DependentUpon>AddForOrdersUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddReviewPage.xaml.cs">
+      <DependentUpon>AddReviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BooksBageAdmin.xaml.cs">
+      <DependentUpon>BooksBageAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BooksPage.xaml.cs">
+      <DependentUpon>BooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyOrders.xaml.cs">
+      <DependentUpon>MyOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPages\PageForAdmin.xaml.cs">
+      <DependentUpon>PageForAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPages\PageForClient.xaml.cs">
+      <DependentUpon>PageForClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPages\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reviews.xaml.cs">
+      <DependentUpon>Reviews.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Users_Temp.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="WorkingWithPage\AddForOrdersUsers.xaml">
       <SubType>Designer</SubType>

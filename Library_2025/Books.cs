@@ -17,7 +17,6 @@ namespace Library_2025
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Books()
         {
-            this.Orders = new HashSet<Orders>();
             this.Reviews = new HashSet<Reviews>();
         }
     
@@ -39,8 +38,6 @@ namespace Library_2025
         public virtual Genres Genres { get; set; }
         public virtual Languages Languages { get; set; }
         public virtual Publishers Publishers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reviews> Reviews { get; set; }
     }

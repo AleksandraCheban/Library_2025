@@ -54,7 +54,7 @@
         </EntityType>
         <EntityType Name="Orders">
           <Key>
-            <PropertyRef Name="ID_orders" />
+            <PropertyRef Name="ID_orders_new" />
           </Key>
           <Property Name="ID_orders" Type="int" Nullable="false" />
           <Property Name="ID_books" Type="int" Nullable="false" />
@@ -63,6 +63,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Result" Type="decimal" Precision="10" Scale="2" />
           <Property Name="ID_orders_new" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewColumn" Type="int" />
         </EntityType>
         <EntityType Name="Publishers">
           <Key>
@@ -116,16 +117,6 @@
           <Property Name="Role" Type="int" />
           <Property Name="E_mail" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Users_Temp">
-          <Key>
-            <PropertyRef Name="ID_users" />
-          </Key>
-          <Property Name="ID_users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="Role" Type="int" />
-          <Property Name="E_mail" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <Association Name="FK__Books__ID_author__2AD55B43">
           <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
@@ -198,30 +189,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__ID_books__3552E9B6">
-          <End Role="Books" Type="Self.Books" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Books">
-              <PropertyRef Name="ID_books" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ID_books" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__ID_users__36470DEF">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID_users" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ID_users" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Reviews__BookID__6D9742D9">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
@@ -246,6 +213,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_roles" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Library_2025ModelContainer">
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
@@ -259,7 +238,6 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users_Temp" EntityType="Self.Users_Temp" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Books__ID_author__2AD55B43" Association="Self.FK__Books__ID_author__2AD55B43">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Books" EntitySet="Books" />
@@ -284,14 +262,6 @@
             <End Role="Publishers" EntitySet="Publishers" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__ID_books__3552E9B6" Association="Self.FK__Orders__ID_books__3552E9B6">
-            <End Role="Books" EntitySet="Books" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reviews__BookID__6D9742D9" Association="Self.FK__Reviews__BookID__6D9742D9">
             <End Role="Books" EntitySet="Books" />
             <End Role="Reviews" EntitySet="Reviews" />
@@ -299,6 +269,10 @@
           <AssociationSet Name="FK__Reviews__UserID__6E8B6712" Association="Self.FK__Reviews__UserID__6E8B6712">
             <End Role="Users" EntitySet="Users" />
             <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -346,7 +320,6 @@
           <NavigationProperty Name="Genres" Relationship="Self.FK__Books__ID_genre__2BC97F7C" FromRole="Books" ToRole="Genres" />
           <NavigationProperty Name="Languages" Relationship="Self.FK__Books__ID_langua__2CBDA3B5" FromRole="Books" ToRole="Languages" />
           <NavigationProperty Name="Publishers" Relationship="Self.FK__Books__ID_publis__2DB1C7EE" FromRole="Books" ToRole="Publishers" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_books__3552E9B6" FromRole="Books" ToRole="Orders" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__BookID__6D9742D9" FromRole="Books" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="Genres">
@@ -367,7 +340,7 @@
         </EntityType>
         <EntityType Name="Orders">
           <Key>
-            <PropertyRef Name="ID_orders" />
+            <PropertyRef Name="ID_orders_new" />
           </Key>
           <Property Name="ID_orders" Type="Int32" Nullable="false" />
           <Property Name="ID_books" Type="Int32" Nullable="false" />
@@ -376,8 +349,7 @@
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Result" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="ID_orders_new" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Books" Relationship="Self.FK__Orders__ID_books__3552E9B6" FromRole="Orders" ToRole="Books" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Orders__ID_users__36470DEF" FromRole="Orders" ToRole="Users" />
+          <Property Name="NewColumn" Type="Int32" />
         </EntityType>
         <EntityType Name="Publishers">
           <Key>
@@ -414,6 +386,7 @@
           </Key>
           <Property Name="ID_roles" Type="Int32" Nullable="false" />
           <Property Name="Roles1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -434,18 +407,8 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="Int32" />
           <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ID_users__36470DEF" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__UserID__6E8B6712" FromRole="Users" ToRole="Reviews" />
-        </EntityType>
-        <EntityType Name="Users_Temp">
-          <Key>
-            <PropertyRef Name="ID_users" />
-          </Key>
-          <Property Name="ID_users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="Int32" />
-          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <Association Name="FK__Books__ID_author__2AD55B43">
           <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
@@ -519,18 +482,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__ID_books__3552E9B6">
-          <End Role="Books" Type="Self.Books" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Books">
-              <PropertyRef Name="ID_books" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ID_books" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Reviews__BookID__6D9742D9">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
@@ -543,18 +494,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__ID_users__36470DEF">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID_users" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ID_users" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Reviews__UserID__6E8B6712">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
@@ -564,6 +503,18 @@
             </Principal>
             <Dependent Role="Reviews">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_roles" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -580,7 +531,6 @@
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="Users_Temp" EntityType="Self.Users_Temp" />
           <AssociationSet Name="FK__Books__ID_author__2AD55B43" Association="Self.FK__Books__ID_author__2AD55B43">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Books" EntitySet="Books" />
@@ -605,21 +555,17 @@
             <End Role="Publishers" EntitySet="Publishers" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__ID_books__3552E9B6" Association="Self.FK__Orders__ID_books__3552E9B6">
-            <End Role="Books" EntitySet="Books" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reviews__BookID__6D9742D9" Association="Self.FK__Reviews__BookID__6D9742D9">
             <End Role="Books" EntitySet="Books" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__ID_users__36470DEF" Association="Self.FK__Orders__ID_users__36470DEF">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reviews__UserID__6E8B6712" Association="Self.FK__Reviews__UserID__6E8B6712">
             <End Role="Users" EntitySet="Users" />
             <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -690,6 +636,7 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
                 <ScalarProperty Name="ID_orders_new" ColumnName="ID_orders_new" />
+                <ScalarProperty Name="NewColumn" ColumnName="NewColumn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -743,17 +690,6 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Library_2025Model.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID_users" ColumnName="ID_users" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Temp">
-            <EntityTypeMapping TypeName="Library_2025Model.Users_Temp">
-              <MappingFragment StoreEntitySet="Users_Temp">
                 <ScalarProperty Name="ID_users" ColumnName="ID_users" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

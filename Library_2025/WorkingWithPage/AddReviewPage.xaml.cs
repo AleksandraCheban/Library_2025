@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Navigation;
 
 namespace Library_2025
@@ -21,7 +23,10 @@ namespace Library_2025
             // Загрузка списка книг
             var books = Library_2025Entities.GetContext().Books.ToList();
             CmbBooks.ItemsSource = books;
-
+            List<int> _rating = new List<int> { 
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
+            CmbRating.ItemsSource = _rating;
             if (review != null)
                 _currentReview = review;
             else
@@ -56,7 +61,7 @@ namespace Library_2025
                 {
                     _currentReview.BookID = selectedBook.ID_books;
                     _currentReview.ReviewText = TxtBox_ReviewText.Text.Trim();
-                    _currentReview.Rating = int.Parse(CmbRating.SelectedItem.ToString());
+                    _currentReview.Rating = Convert.ToInt32(CmbRating.SelectedItem);
                     _currentReview.ReviewDate = DateTime.Now;
 
                     if (_currentReview.ReviewID == 0)
