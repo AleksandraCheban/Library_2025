@@ -23,47 +23,32 @@ namespace Library_2025
         {
             InitializeComponent();
             LoadOrders();
-            //var context = Library_2025Entities.GetContext();
-            //var orders = context.Orders
-            //    .Include(o => o.Books) // Убедитесь, что вы загружаете связанные данные
-            //    .Select(o => new
-            //    {
-            //        BookName = o.Books.Name, // Используйте свойство Name из связанной сущности Books
-            //        o.Cost,
-            //        o.Quantity,
-            //        o.Result
-            //    })
-            //    .ToList();
 
-            //DataGridOrders.ItemsSource = orders;
         }
 
         private void LoadOrders()
         {
+            ////var context = Library_2025Entities.GetContext();
 
-            DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders
-                .Select(o => new
-                {
-                    BookName = o.Books.Name, // Предполагается, что у вас есть навигационное свойство Book и у Book есть свойство Name
-                    UserLogin = o.Users.Login, // Предполагается, что у вас есть навигационное свойство User и у User есть свойство Login
-                    o.Cost,
-                    o.Quantity,
-                    o.Result
-                }).ToList();
-            //var context = Library_2025Entities.GetContext();
-            //DataGridOrders.ItemsSource = context.Orders
-            //    .Include(o => o.Books) // Загружаем связанные данные для книг
-            //    .Include(o => o.Users) // Загружаем связанные данные для пользователей
-            //    .Select(o => new
-            //    {
-            //        BookName = o.Books.Name, // Используем навигационное свойство Books и свойство Name
-            //        UserLogin = o.Users.Login, // Используем навигационное свойство Users и свойство Login
-            //        o.Cost,
-            //        o.Quantity,
-            //        o.Result
-            //    })
-            //    .ToList();
+            ////DataGridOrders.ItemsSource = context.Orders
+            ////    .Join(context.Books,
+            ////        o => o.ID_books,
+            ////        b => b.ID_books,
+            ////        (o, b) => new { Order = o, Book = b })
+            ////    .Join(context.Users,
+            ////        x => x.Order.ID_users,
+            ////        u => u.ID_users,
+            ////        (x, u) => new
+            ////        {
+            ////            BookName = x.Book.Name,
+            ////            UserLogin = u.Login,
+            ////            x.Order.Cost,
+            ////            x.Order.Quantity,
+            ////            x.Order.Result
+            ////        })
+            ////    .ToList();
         }
+
 
         private void OrderChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
         {

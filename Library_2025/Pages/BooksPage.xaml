@@ -28,6 +28,7 @@
                         <DataGridTextColumn Header="Издатель" Binding="{Binding Publishers.Title}" Width="*"/>
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" Width="*"/>
                         <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" Width="*"/>
+                        <DataGridTextColumn Header="Картинка" Binding="{Binding Rating}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

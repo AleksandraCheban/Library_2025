@@ -18,28 +18,19 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <DataGrid Grid.Row="0" Name="DG" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid Grid.Row="0" Name="DG" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Книга" Binding="{Binding BookName}" />
                         <DataGridTextColumn Header="Пользователь" Binding="{Binding UserLogin}" />
-                        <DataGridTextColumn Header="Текст отзыва" Binding="{Binding ReviewText}" />
                         <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
                         <DataGridTextColumn Header="Дата отзыва" Binding="{Binding ReviewDate}" />
-
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Style="{StaticResource Button_Common_Style}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Текст отзыва" Binding="{Binding ReviewText}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button Name="ButtonAdd" Content="Добавить" Click="ButtonAdd_OnClick" Width="133" Style="{StaticResource Button_Common_Style}" Margin="0,0,10,0"/>
                     <Button Name="ButtonReturn" Content="Вернуться назад в меню" Click="ButtonReturn_OnClick" Width="250" Style="{StaticResource Button_Common_Style}"/>
                 </StackPanel>
-                <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_OnClick" Width="133" Style="{StaticResource Button_Common_Style}"/>
             </Grid>
         </Border>
     </Grid>
