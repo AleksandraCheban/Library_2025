@@ -8,7 +8,7 @@
       d:DesignHeight="450"
       d:DesignWidth="800"
       Title="MyOrders"
-      Background="AliceBlue">
+      Background="AliceBlue" IsVisibleChanged="OrderChange_IsVisibliChange">
     <Grid Background="#ffdadada">
         <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
             <Border.Effect>
@@ -21,7 +21,7 @@
                 </Grid.RowDefinitions>
                 <DataGrid Grid.Row="0" Name="DataGridOrders" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Книга" Binding="{Binding Books.Name}" />
+                        <DataGridTextColumn Header="Книга" Binding="{Binding BookName}" />
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" />
                         <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
                         <DataGridTextColumn Header="Итог" Binding="{Binding Result}" />

@@ -22,5 +22,7 @@ namespace Library_2025
         public Nullable<decimal> Result { get; set; }
         public int ID_orders_new { get; set; }
         public Nullable<int> NewColumn { get; set; }
+    
+        public virtual Books Books { get; set; }
     }
 }

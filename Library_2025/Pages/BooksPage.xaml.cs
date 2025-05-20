@@ -12,33 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace Library_2025
 {
-
     public partial class BooksPage : Page
     {
-        // <summary>
-        /// Логика взаимодействия для ProductsPage.xaml
-        /// </summary>
+        public BooksPage()
+        {
+            InitializeComponent();
 
-            public BooksPage()
-            {
-                InitializeComponent();
-                DataGridProducts.ItemsSource = Library_2025Entities.GetContext().Books.ToList();
-            }
+            // Загрузка данных с использованием Include для связанных таблиц
+            var context = Library_2025Entities.GetContext();
+            var books = context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Genres)
+                .Include(b => b.Languages)
+                .Include(b => b.Publishers)
+                .ToList();
 
-            private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
-            {
+            DataGridProducts.ItemsSource = books;
+        }
 
-            }
+        private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddForOrdersUsers(null));
+        }
 
-            private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
-            {
-                //NavigationService.Navigate(new AddProductPage());
-            }
-
-            
 
         private void ButtonReturnToMain_OnClick(object sender, RoutedEventArgs e)
         {

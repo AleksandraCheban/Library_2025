@@ -29,16 +29,18 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Книга" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0"/>
-                <ComboBox Name="CmbBooks" DisplayMemberPath="Name" SelectedItem="{Binding Books, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbBooks" DisplayMemberPath="Name" SelectedItem="{Binding Books, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0" SelectionChanged="CmbBooks_SelectionChanged"/>
 
                 <TextBlock Text="Пользователь" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0"/>
                 <ComboBox Name="CmbUsers" DisplayMemberPath="Login" SelectedItem="{Binding Users, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
 
                 <TextBlock Text="Количество" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0"/>
-                <TextBox Name="TbQuantity" Text="{Binding Quantity}" Grid.Row="2" Grid.Column="1" Margin="0,10,0,0" TextChanged="TbQuantityOrCost_TextChanged"/>
+                <TextBox Name="TbQuantity" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="0,10,0,0" TextChanged="TbQuantity_TextChanged"/>
+
 
                 <TextBlock Text="Стоимость" Grid.Row="3" Grid.Column="0" Margin="0,10,0,0"/>
-                <TextBox Name="TbCost" Text="{Binding Cost}" Grid.Row="3" Grid.Column="1" Margin="0,10,0,0" TextChanged="TbQuantityOrCost_TextChanged"/>
+                <TextBox Name="TbCost" Text="{Binding SelectedBookCost, Mode=OneWay}" Grid.Row="3" Grid.Column="1" Margin="0,10,0,0" IsReadOnly="True" Background="#EEE" />
+
 
                 <TextBlock Text="Результат" Grid.Row="4" Grid.Column="0" Margin="0,10,0,0"/>
                 <TextBox Name="TbResult" Text="{Binding Result}" Grid.Row="4" Grid.Column="1" Margin="0,10,0,0" IsReadOnly="True" Background="#EEE" />

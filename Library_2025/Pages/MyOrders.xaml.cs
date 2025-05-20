@@ -22,9 +22,31 @@ namespace Library_2025
         public MyOrders()
         {
             InitializeComponent();
-            DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders.ToList();
+            var context = Library_2025Entities.GetContext();
+            var orders = context.Orders
+                .Include(o => o.Books) // Убедитесь, что вы загружаете связанные данные
+                .Select(o => new
+                {
+                    BookName = o.Books.Name, // Используйте свойство Name из связанной сущности Books
+                    o.Cost,
+                    o.Quantity,
+                    o.Result
+                })
+                .ToList();
+
+            DataGridOrders.ItemsSource = orders;
         }
 
+
+
+        private void OrderChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                Library_2025Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders.ToList();
+            }
+        }
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
             var selectedOrder = DataGridOrders.SelectedItem as Orders;

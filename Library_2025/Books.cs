@@ -18,6 +18,7 @@ namespace Library_2025
         public Books()
         {
             this.Reviews = new HashSet<Reviews>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int ID_books { get; set; }
@@ -40,5 +41,7 @@ namespace Library_2025
         public virtual Publishers Publishers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reviews> Reviews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

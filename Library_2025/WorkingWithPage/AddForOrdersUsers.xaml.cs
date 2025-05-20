@@ -4,13 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Library_2025
 {
-    public partial class AddForOrdersUsers : Page
+    public partial class AddForOrdersUsers : Page, INotifyPropertyChanged
     {
         private Orders _order;
         private readonly Library_2025Entities _context;
+        private decimal _selectedBookCost;
+        private int _quantity;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public decimal SelectedBookCost
+        {
+            get { return _selectedBookCost; }
+            set
+            {
+                _selectedBookCost = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Quantity
+        {
+            get { return _quantity; }
+            set
+            {
+                _quantity = value;
+                OnPropertyChanged();
+            }
+        }
 
         public AddForOrdersUsers(Orders selectedOrder)
         {
@@ -19,8 +45,6 @@ namespace Library_2025
             _context = Library_2025Entities.GetContext();
             CmbBooks.ItemsSource = _context.Books.ToList();
             CmbUsers.ItemsSource = _context.Users.ToList();
-
-            
 
             if (selectedOrder != null)
             {
@@ -31,27 +55,42 @@ namespace Library_2025
                 _order = new Orders();
             }
 
-            DataContext = _order;
+            DataContext = this;
         }
 
-        //private void BooksPage_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if (Visibility == Visibility.Visible)
-        //    {
-        //        Library_2025Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-        //        DataGridProducts.ItemsSourde = Library_2025Entities.GetContext().Products.ToList();
-        //    }
-        //}
-
-
-        private void TbQuantityOrCost_TextChanged(object sender, TextChangedEventArgs e)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // Попытка вычислить результат при изменении количества или стоимости
-            if (int.TryParse(TbQuantity.Text, out int quantity) && quantity > 0 &&
-                decimal.TryParse(TbCost.Text, out decimal cost) && cost >= 0)
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void CmbBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CmbBooks.SelectedItem is Books selectedBook && selectedBook.Costs.HasValue)
             {
-                decimal result = quantity * cost;
+                // Устанавливаем стоимость книги в зависимости от выбранной книги
+                SelectedBookCost = selectedBook.Costs.Value;
+                _order.Cost = selectedBook.Costs.Value;
+
+                // Устанавливаем количество по умолчанию равным 1
+                Quantity = 1;
+                TbQuantity.Text = Quantity.ToString();
+                _order.Quantity = Quantity;
+
+                // Вычисляем результат
+                TbResult.Text = (selectedBook.Costs.Value * Quantity).ToString("F2");
+                _order.Result = selectedBook.Costs.Value * Quantity;
+            }
+        }
+
+        private void TbQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Попытка вычислить результат при изменении количества
+            if (int.TryParse(TbQuantity.Text, out int quantity) && quantity > 0)
+            {
+                Quantity = quantity;
+                decimal result = quantity * SelectedBookCost;
                 TbResult.Text = result.ToString("F2"); // Формат с 2 знаками после запятой
+                _order.Result = result;
             }
             else
             {
@@ -63,20 +102,14 @@ namespace Library_2025
         {
             StringBuilder errors = new StringBuilder();
 
-            if (_context.Books == null)
+            if (CmbBooks.SelectedItem == null)
                 errors.AppendLine("Выберите книгу!");
 
-            if (_context.Users == null)
+            if (CmbUsers.SelectedItem == null)
                 errors.AppendLine("Выберите пользователя!");
 
-            if (!int.TryParse(TbQuantity.Text, out int quantity) || quantity <= 0)
+            if (Quantity <= 0)
                 errors.AppendLine("Введите корректное количество!");
-
-            if (!decimal.TryParse(TbCost.Text, out decimal cost) || cost < 0)
-                errors.AppendLine("Введите корректную стоимость!");
-
-            if (!decimal.TryParse(TbResult.Text, out decimal result) || result < 0)
-                errors.AppendLine("Результат вычислен некорректно!");
 
             if (errors.Length > 0)
             {
@@ -84,12 +117,21 @@ namespace Library_2025
                 return;
             }
 
-            _order.Quantity = quantity;
-            _order.Cost = cost;
-            _order.Result = result;
+            _order.Quantity = Quantity;
 
             try
             {
+                // Убедитесь, что все необходимые данные заполнены
+                if (CmbBooks.SelectedItem is Books selectedBook)
+                {
+                    _order.ID_books = selectedBook.ID_books;
+                }
+
+                if (CmbUsers.SelectedItem is Users selectedUser)
+                {
+                    _order.ID_users = selectedUser.ID_users;
+                }
+
                 Debug.WriteLine(_order.ID_orders);
                 _context.Orders.Add(_order);
                 _context.SaveChanges();
@@ -97,7 +139,7 @@ namespace Library_2025
 
                 // Сброс формы после сохранения
                 _order = new Orders();
-                DataContext = _order;
+                DataContext = this;
                 CmbBooks.SelectedItem = null;
                 CmbUsers.SelectedItem = null;
                 TbQuantity.Text = string.Empty;

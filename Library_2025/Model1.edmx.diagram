@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b503c4d3c916499b9f30f9d3972c7540" Name="Diagram1">
-        <EntityTypeShape EntityType="Library_2025Model.Authors" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Availability" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Books" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Genres" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Languages" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Orders" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Publishers" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.ReaderCategories" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Reviews" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Roles" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Library_2025Model.Users" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+      <Diagram DiagramId="850250efaa9c45a9883260a14a3aac66" Name="Diagram1">
+        <EntityTypeShape EntityType="Library_2025Model.Authors" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Availability" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Books" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Genres" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Languages" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Orders" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Publishers" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.ReaderCategories" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Reviews" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Roles" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Library_2025Model.Users" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_author__2AD55B43" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_availa__2EA5EC27" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_catego__2F9A1060" ManuallyRouted="false" />
@@ -24,6 +24,7 @@
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_langua__2CBDA3B5" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Books__ID_publis__2DB1C7EE" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Reviews__BookID__6D9742D9" ManuallyRouted="false" />
+        <AssociationConnector Association="Library_2025Model.FK_Orders_Books" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK__Reviews__UserID__6E8B6712" ManuallyRouted="false" />
         <AssociationConnector Association="Library_2025Model.FK_Users_Roles" ManuallyRouted="false" />
       </Diagram>
