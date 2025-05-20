@@ -34,8 +34,21 @@ namespace Library_2025
 
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MyOrders());
+            // Предположим, что у вас есть способ получить идентификатор текущего пользователя
+            int currentUserId = GetCurrentUserId(); // Замените это на реальный способ получения идентификатора пользователя
+
+            // Передаем идентификатор текущего пользователя при создании экземпляра MyOrders
+            NavigationService.Navigate(new MyOrders(currentUserId));
         }
+
+        // Пример метода для получения идентификатора текущего пользователя
+        private int GetCurrentUserId()
+        {
+            // Здесь должен быть ваш код для получения идентификатора текущего пользователя
+            // Например, из статического свойства или сервиса аутентификации
+            return 1; // Замените это на реальный идентификатор пользователя
+        }
+
 
         private void Reviews_Click(object sender, RoutedEventArgs e)
         {

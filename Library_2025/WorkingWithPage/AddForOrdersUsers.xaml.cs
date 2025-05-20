@@ -97,7 +97,10 @@ namespace Library_2025
                 TbResult.Text = string.Empty;
             }
         }
-
+        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();

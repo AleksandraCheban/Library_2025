@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:Library_2025"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="OrdersPage" Background="AliceBlue">
-    
+      Title="OrdersPage" Background="AliceBlue" IsVisibleChanged="Order1Change_IsVisibliChange">
+
     <Grid Background="#ffdadada">
         <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
             <Border.Effect>
@@ -20,9 +20,8 @@
                 </Grid.RowDefinitions>
                 <DataGrid Grid.Row="0" Name="DataGridOrders" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID Заказа" Binding="{Binding ID_orders}" />
-                        <DataGridTextColumn Header="Книга" Binding="{Binding Book.Name}" />
-                        <DataGridTextColumn Header="Пользователь" Binding="{Binding User.Name}" />
+                        <DataGridTextColumn Header="Книга" Binding="{Binding Books.Name}" />
+                        <DataGridTextColumn Header="Пользователь" Binding="{Binding Users.Login}" />
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" />
                         <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
                         <DataGridTextColumn Header="Итог" Binding="{Binding Result}" />

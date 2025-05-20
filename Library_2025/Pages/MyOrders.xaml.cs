@@ -19,45 +19,30 @@ namespace Library_2025
 {
     public partial class MyOrders : Page
     {
-        public MyOrders()
+        private int _currentUserId; // Предположим, что это идентификатор текущего пользователя
+
+        public MyOrders(int currentUserId)
         {
             InitializeComponent();
-            LoadOrders();
-
+            _currentUserId = currentUserId;
         }
-
-        private void LoadOrders()
-        {
-            ////var context = Library_2025Entities.GetContext();
-
-            ////DataGridOrders.ItemsSource = context.Orders
-            ////    .Join(context.Books,
-            ////        o => o.ID_books,
-            ////        b => b.ID_books,
-            ////        (o, b) => new { Order = o, Book = b })
-            ////    .Join(context.Users,
-            ////        x => x.Order.ID_users,
-            ////        u => u.ID_users,
-            ////        (x, u) => new
-            ////        {
-            ////            BookName = x.Book.Name,
-            ////            UserLogin = u.Login,
-            ////            x.Order.Cost,
-            ////            x.Order.Quantity,
-            ////            x.Order.Result
-            ////        })
-            ////    .ToList();
-        }
-
 
         private void OrderChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility == Visibility.Visible)
             {
+                var context = Library_2025Entities.GetContext();
                 Library_2025Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-                DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders.ToList();
+
+                // Фильтруем заказы по идентификатору текущего пользователя
+                DataGridOrders.ItemsSource = context.Orders
+                    .Where(o => o.ID_users == _currentUserId)
+                    .Include(o => o.Books)
+                    .Include(o => o.Users)
+                    .ToList();
             }
         }
+
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
             var selectedOrder = DataGridOrders.SelectedItem as Orders;
@@ -82,7 +67,13 @@ namespace Library_2025
                     var context = Library_2025Entities.GetContext();
                     context.Orders.Remove(selectedOrder);
                     context.SaveChanges();
-                    DataGridOrders.ItemsSource = context.Orders.ToList();
+
+                    // Обновляем список заказов после удаления
+                    DataGridOrders.ItemsSource = context.Orders
+                        .Where(o => o.ID_users == _currentUserId)
+                        .Include(o => o.Books)
+                        .Include(o => o.Users)
+                        .ToList();
                 }
                 catch (DbUpdateException ex)
                 {

@@ -43,6 +43,14 @@ namespace Library_2025
                 }).ToList();
         }
 
+        private void Reviews_IsVisibleChange(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                LoadReviews();
+            }
+        }
+
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;

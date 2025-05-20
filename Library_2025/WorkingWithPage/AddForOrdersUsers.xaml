@@ -46,6 +46,7 @@
                 <TextBox Name="TbResult" Text="{Binding Result}" Grid.Row="4" Grid.Column="1" Margin="0,10,0,0" IsReadOnly="True" Background="#EEE" />
 
                 <Button Name="ButtonSave" Content="Сохранить" Grid.Row="6" Grid.Column="1" Width="133" Click="ButtonSave_OnClick" Background="White" Margin="0,20,0,0"/>
+                <Button Name="ButtonBack" Content="Назад" Grid.Row="6" Grid.Column="0" Width="133" Click="ButtonBack_OnClick" Background="White" Margin="0,20,0,0"/>
             </Grid>
         </Border>
     </Grid>

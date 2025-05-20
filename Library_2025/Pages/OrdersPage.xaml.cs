@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,35 +24,29 @@ namespace Library_2025
         public OrdersPage()
         {
             InitializeComponent();
-            LoadOrders();
+           
         }
 
-        private void LoadOrders()
+        private void Order1Change_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders
-                .Select(o => new
-                {
-                    o.ID_orders,
-                    //Book = o.Book, // Предполагается, что есть навигационное свойство для книги
-                    //User = o.User, // Предполагается, что есть навигационное свойство для пользователя
-                    o.Cost,
-                    o.Quantity,
-                    o.Result
-                }).ToList();
+            if (Visibility == Visibility.Visible)
+            {
+                Library_2025Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders.ToList();
+            }
         }
-
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
             var selectedOrder = DataGridOrders.SelectedItem as Orders;
             if (selectedOrder != null)
             {
-                // NavigationService.Navigate(new EditOrderPage(selectedOrder));
+                NavigationService.Navigate(new AddForOrdersUsers(selectedOrder));
             }
         }
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-             NavigationService.Navigate(new AddForOrdersUsers(null));
+            NavigationService.Navigate(new AddForOrdersUsers(null));
         }
 
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
@@ -59,10 +54,27 @@ namespace Library_2025
             var selectedOrder = DataGridOrders.SelectedItem as Orders;
             if (selectedOrder != null)
             {
-                var context = Library_2025Entities.GetContext();
-                context.Orders.Remove(selectedOrder);
-                context.SaveChanges();
-                DataGridOrders.ItemsSource = context.Orders.ToList();
+                try
+                {
+                    var context = Library_2025Entities.GetContext();
+                    context.Orders.Remove(selectedOrder);
+                    context.SaveChanges();
+                    DataGridOrders.ItemsSource = context.Orders.ToList();
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Получение внутреннего исключения
+                    var innerException = ex.InnerException;
+                    while (innerException != null)
+                    {
+                        MessageBox.Show($"Ошибка при удалении данных: {innerException.Message}");
+                        innerException = innerException.InnerException;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении данных: {ex.Message}");
+                }
             }
         }
 
