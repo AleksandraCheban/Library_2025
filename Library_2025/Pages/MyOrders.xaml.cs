@@ -22,22 +22,48 @@ namespace Library_2025
         public MyOrders()
         {
             InitializeComponent();
-            var context = Library_2025Entities.GetContext();
-            var orders = context.Orders
-                .Include(o => o.Books) // Убедитесь, что вы загружаете связанные данные
+            LoadOrders();
+            //var context = Library_2025Entities.GetContext();
+            //var orders = context.Orders
+            //    .Include(o => o.Books) // Убедитесь, что вы загружаете связанные данные
+            //    .Select(o => new
+            //    {
+            //        BookName = o.Books.Name, // Используйте свойство Name из связанной сущности Books
+            //        o.Cost,
+            //        o.Quantity,
+            //        o.Result
+            //    })
+            //    .ToList();
+
+            //DataGridOrders.ItemsSource = orders;
+        }
+
+        private void LoadOrders()
+        {
+
+            DataGridOrders.ItemsSource = Library_2025Entities.GetContext().Orders
                 .Select(o => new
                 {
-                    BookName = o.Books.Name, // Используйте свойство Name из связанной сущности Books
+                    BookName = o.Books.Name, // Предполагается, что у вас есть навигационное свойство Book и у Book есть свойство Name
+                    UserLogin = o.Users.Login, // Предполагается, что у вас есть навигационное свойство User и у User есть свойство Login
                     o.Cost,
                     o.Quantity,
                     o.Result
-                })
-                .ToList();
-
-            DataGridOrders.ItemsSource = orders;
+                }).ToList();
+            //var context = Library_2025Entities.GetContext();
+            //DataGridOrders.ItemsSource = context.Orders
+            //    .Include(o => o.Books) // Загружаем связанные данные для книг
+            //    .Include(o => o.Users) // Загружаем связанные данные для пользователей
+            //    .Select(o => new
+            //    {
+            //        BookName = o.Books.Name, // Используем навигационное свойство Books и свойство Name
+            //        UserLogin = o.Users.Login, // Используем навигационное свойство Users и свойство Login
+            //        o.Cost,
+            //        o.Quantity,
+            //        o.Result
+            //    })
+            //    .ToList();
         }
-
-
 
         private void OrderChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
         {

@@ -12,9 +12,7 @@ namespace Library_2025
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-
-
+    
     public partial class Library_2025Entities : DbContext
     {
         private static Library_2025Entities _context;
@@ -24,16 +22,11 @@ namespace Library_2025
                 _context = new Library_2025Entities();
             return _context;
         }
-
         public Library_2025Entities()
-        : base("name=Library_2025Entities")
+            : base("name=Library_2025Entities")
         {
-            // Отключение создания прокси
-            this.Configuration.ProxyCreationEnabled = false;
         }
-
-
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

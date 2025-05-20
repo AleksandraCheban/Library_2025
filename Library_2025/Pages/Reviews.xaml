@@ -20,9 +20,8 @@
                 </Grid.RowDefinitions>
                 <DataGrid Grid.Row="0" Name="DG" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ReviewID}" />
-                        <DataGridTextColumn Header="ID книги" Binding="{Binding BookID}" />
-                        <DataGridTextColumn Header="ID пользователя" Binding="{Binding UserID}" />
+                        <DataGridTextColumn Header="Книга" Binding="{Binding BookName}" />
+                        <DataGridTextColumn Header="Пользователь" Binding="{Binding UserLogin}" />
                         <DataGridTextColumn Header="Текст отзыва" Binding="{Binding ReviewText}" />
                         <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
                         <DataGridTextColumn Header="Дата отзыва" Binding="{Binding ReviewDate}" />

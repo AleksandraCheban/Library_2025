@@ -22,6 +22,7 @@
                 <DataGrid Grid.Row="0" Name="DataGridOrders" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Книга" Binding="{Binding BookName}" />
+                        <DataGridTextColumn Header="Пользователь" Binding="{Binding UserLogin}" />
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" />
                         <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
                         <DataGridTextColumn Header="Итог" Binding="{Binding Result}" />
