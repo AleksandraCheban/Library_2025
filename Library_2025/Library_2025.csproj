@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PayOrders.xaml.cs">
+      <DependentUpon>PayOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WorkingWithPage\AddBooksPage.xaml.cs">
       <DependentUpon>AddBooksPage.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
     <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="PayOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkingWithPage\AddBooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

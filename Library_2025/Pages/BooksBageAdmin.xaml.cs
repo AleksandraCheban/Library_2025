@@ -61,6 +61,7 @@ namespace Library_2025
         }
 
 
+
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
         {
             // Логика для удаления продукта
