@@ -27,19 +27,39 @@ namespace Library_2025
         }
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            // Логика для редактирования продукта
-            // Например, можно открыть страницу редактирования с выбранным продуктом
             var selectedProduct = DataGridProducts.SelectedItem as Books;
             if (selectedProduct != null)
             {
-                //NavigationService.Navigate(new EditProductPage(selectedProduct)); 
+                try
+                {
+                    // Переход на страницу редактирования с выбранной книгой
+                    NavigationService.Navigate(new AddBooksPage(selectedProduct));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при переходе на страницу редактирования: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите книгу для редактирования.");
             }
         }
 
+
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AddProductPage());
+            try
+            {
+                // Переход на страницу добавления с пустыми полями
+                NavigationService.Navigate(new AddBooksPage(null));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при переходе на страницу добавления: {ex.Message}");
+            }
         }
+
 
         private void ButtonDel_OnClick(object sender, RoutedEventArgs e)
         {

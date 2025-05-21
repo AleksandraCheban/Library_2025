@@ -1,0 +1,58 @@
+﻿<Page x:Class="Library_2025.AddBooksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Library_2025"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddBooksPage" Background="AliceBlue">
+
+    <Grid Background="#ffdadada">
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Название книги" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TbBookName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Автор" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbAuthors" DisplayMemberPath="Surname" SelectedItem="{Binding Authors, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Жанр" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbGenres" DisplayMemberPath="Genre" SelectedItem="{Binding Genres, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Язык" Grid.Row="3" Grid.Column="0" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbLanguages" DisplayMemberPath="Title" SelectedItem="{Binding Languages, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Издатель" Grid.Row="4" Grid.Column="0" Margin="0,10,0,0"/>
+                <ComboBox Name="CmbPublishers" DisplayMemberPath="Title" SelectedItem="{Binding Publishers, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Стоимость" Grid.Row="5" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TbCost" Text="{Binding Costs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <TextBlock Text="Рейтинг" Grid.Row="6" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TbRating" Text="{Binding Rating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <Button Name="ButtonSave" Content="Сохранить" Grid.Row="7" Grid.Column="1" Width="133" Click="ButtonSave_OnClick" Background="White" Margin="0,20,0,0"/>
+                <Button Name="ButtonBack" Content="Назад" Grid.Row="7" Grid.Column="0" Width="133" Click="ButtonBack_OnClick" Background="White" Margin="0,20,0,0"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
