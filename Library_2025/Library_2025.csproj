@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WorkingWithPage\AddOrdersForAdmin.xaml.cs">
+      <DependentUpon>AddOrdersForAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
     <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="WorkingWithPage\AddOrdersForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkingWithPage\AddForOrdersUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
