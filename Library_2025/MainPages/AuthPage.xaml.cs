@@ -25,7 +25,7 @@ namespace Library_2025
         {
             InitializeComponent();
         }
-        
+
         private void TextBoxLogin_GotFocus(object sender, RoutedEventArgs e)
         {
             if (textBoxLogin.Text == "Введите логин")
@@ -61,7 +61,7 @@ namespace Library_2025
             }
         }
 
-                private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Проверка, что логин и пароль не пустые
             if (string.IsNullOrEmpty(textBoxLogin.Text) || string.IsNullOrEmpty(passBox.Password))
@@ -83,22 +83,22 @@ namespace Library_2025
                     return;
                 }
 
+                // Устанавливаем идентификатор текущего пользователя в сервисе аутентификации
+                PageForClient.AuthenticationService.CurrentUserId = user.ID_users;
+
                 // Открытие соответствующего окна в зависимости от роли пользователя
                 if (user.Role == 1)
                 {
                     NavigationService.Navigate(new PageForClient(user));
-                    
                 }
                 else
                 {
-                    NavigationService.Navigate(new PageForAdmin(user)); 
+                    NavigationService.Navigate(new PageForAdmin(user));
                 }
-
-          
             }
         }
 
-        public static string GetHash (string password)
+        public static string GetHash(string password)
         {
             using (var hash = SHA1.Create())
             {
@@ -110,7 +110,5 @@ namespace Library_2025
         {
             NavigationService.Navigate(new Registration());
         }
-
-
     }
 }

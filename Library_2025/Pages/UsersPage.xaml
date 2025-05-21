@@ -30,7 +30,11 @@
                 <TextBox x:Name="SearchUserLogin" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" TextChanged="SearchUserLogin_TextChanged" Width="135" Grid.ColumnSpan="2" Margin="116,0,0,22" Grid.RowSpan="2"/>
 
                 <TextBlock Text="Фильтр по роли" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" FontSize="14"/>
-                <ComboBox Name="SortUserRole" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectionChanged="SortUserRole_SelectionChanged" Width="135" Grid.ColumnSpan="2" Margin="117,0,0,26" Grid.RowSpan="2"/>
+                <ComboBox Name="SortUserRole" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectionChanged="SortUserRole_SelectionChanged" Width="135" Grid.ColumnSpan="2" Margin="117,0,0,26" Grid.RowSpan="2">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>Администратор</ComboBoxItem>
+                    <ComboBoxItem>Пользователь</ComboBoxItem>
+                </ComboBox>
 
                 <Button x:Name="CleanFilter" Grid.Column="2" Content="Очистить фильтр" FontSize="10" Click="CleanFilter_Click" Margin="0,14,0,6" Grid.RowSpan="2"/>
 

@@ -18,7 +18,6 @@ namespace Library_2025
         {
             InitializeComponent();
             LoadUsers();
-            SortUserRole.ItemsSource = new List<string> { "Все", "Администратор", "Пользователь" };
         }
 
         private void LoadUsers()
@@ -48,7 +47,7 @@ namespace Library_2025
 
             if (SortUserRole.SelectedIndex > 0)
             {
-                string selectedRole = SortUserRole.SelectedItem.ToString();
+                string selectedRole = (SortUserRole.SelectedItem as ComboBoxItem)?.Content.ToString();
                 int roleId = selectedRole == "Администратор" ? 1 : 2;
                 filteredUsers = filteredUsers.Where(u => u.Role == roleId);
             }

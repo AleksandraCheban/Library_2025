@@ -25,6 +25,8 @@ namespace Library_2025
         {
             InitializeComponent();
             _currentUserId = currentUserId;
+           
+
         }
 
         private void OrderChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
