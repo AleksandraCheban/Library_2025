@@ -52,7 +52,17 @@ namespace Library_2025
                     _currentUser.Login = TxtBox_Login.Text.Trim();
                     _currentUser.Password = PwdBox_Password.Password;
                     _currentUser.E_mail = TxtBox_Email.Text.Trim();
-                    _currentUser.Role = int.Parse(CmbRole.SelectedItem.ToString());
+
+                    // Проверка и преобразование роли
+                    if (CmbRole.SelectedItem is ComboBoxItem selectedItem && int.TryParse(selectedItem.Content.ToString(), out int role))
+                    {
+                        _currentUser.Role = role;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Некорректное значение роли", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
                     if (_currentUser.ID_users == 0)
                         db.Users.Add(_currentUser);
@@ -68,6 +78,7 @@ namespace Library_2025
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {

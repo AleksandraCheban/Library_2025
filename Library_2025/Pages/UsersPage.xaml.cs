@@ -19,7 +19,13 @@ namespace Library_2025
             InitializeComponent();
             LoadUsers();
         }
-
+        private void UsersChange_IsVisibliChange(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                LoadUsers();
+            }
+        }
         private void LoadUsers()
         {
             _allUsers = Library_2025Entities.GetContext().Users.ToList();

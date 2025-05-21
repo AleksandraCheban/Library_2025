@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Library_2025"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsersPage" Background="AliceBlue">
+      Title="UsersPage" Background="AliceBlue" IsVisibleChanged="UsersChange_IsVisibliChange">
 
     <Grid Background="#ffdadada">
         <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="750" CornerRadius="20">
@@ -40,12 +40,13 @@
 
                 <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Name="DataGridUsers" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID_users}" />
-                        <DataGridTextColumn Header="Логин" Binding="{Binding Login}" />
-                        <DataGridTextColumn Header="Роль" Binding="{Binding Role}" />
-                        <DataGridTextColumn Header="E-mail" Binding="{Binding E_mail}" />
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID_users}" Width="Auto"/>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="Auto"/>
+                        <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="Auto"/>
+                        <DataGridTextColumn Header="E-mail" Binding="{Binding E_mail}" Width="Auto"/>
 
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*">
+                            <!-- Установите Width="*" для последней колонки -->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_OnClick" Style="{StaticResource Button_Common_Style}"/>
