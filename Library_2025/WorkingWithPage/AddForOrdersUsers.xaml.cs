@@ -44,7 +44,15 @@ namespace Library_2025
 
             _context = Library_2025Entities.GetContext();
             CmbBooks.ItemsSource = _context.Books.ToList();
-            CmbUsers.ItemsSource = _context.Users.ToList();
+
+            // Загружаем только текущего пользователя
+            int currentUserId = PageForClient.AuthenticationService.CurrentUserId;
+            var currentUser = _context.Users.FirstOrDefault(u => u.ID_users == currentUserId);
+            if (currentUser != null)
+            {
+                CmbUsers.ItemsSource = new[] { currentUser };
+                CmbUsers.SelectedItem = currentUser;
+            }
 
             if (selectedOrder != null)
             {
@@ -97,10 +105,12 @@ namespace Library_2025
                 TbResult.Text = string.Empty;
             }
         }
+
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
+
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
