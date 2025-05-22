@@ -59,6 +59,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,15 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PayOrders.xaml.cs">
-      <DependentUpon>PayOrders.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkingWithPage\AddBooksPage.xaml.cs">
-      <DependentUpon>AddBooksPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkingWithPage\AddOrdersForAdmin.xaml.cs">
-      <DependentUpon>AddOrdersForAdmin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -119,11 +111,17 @@
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="PayOrders.xaml.cs">
+      <DependentUpon>PayOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ReaderCategories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reports.xaml.cs">
+      <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reviews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -136,6 +134,12 @@
     </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddBooksPage.xaml.cs">
+      <DependentUpon>AddBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingWithPage\AddOrdersForAdmin.xaml.cs">
+      <DependentUpon>AddOrdersForAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkingWithPage\AddForOrdersUsers.xaml.cs">
       <DependentUpon>AddForOrdersUsers.xaml</DependentUpon>
@@ -183,6 +187,10 @@
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Page Include="PayOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Reports.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,6 +307,44 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">

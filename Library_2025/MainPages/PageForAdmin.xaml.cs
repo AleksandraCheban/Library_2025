@@ -41,6 +41,11 @@ namespace Library_2025
             NavigationService.Navigate(new UsersPage());
         }
 
+        private void Reports_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Reports());
+        }
+
 
         private void Auth_Click(object sender, RoutedEventArgs e)
         {

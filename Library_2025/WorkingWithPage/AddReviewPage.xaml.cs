@@ -24,9 +24,14 @@ namespace Library_2025
             var books = Library_2025Entities.GetContext().Books.ToList();
             CmbBooks.ItemsSource = books;
 
-            // Загрузка списка пользователей
-            var users = Library_2025Entities.GetContext().Users.ToList();
-            CmbUsers.ItemsSource = users;
+            // Загрузка только текущего пользователя
+            int currentUserId = PageForClient.AuthenticationService.CurrentUserId;
+            var currentUser = Library_2025Entities.GetContext().Users.FirstOrDefault(u => u.ID_users == currentUserId);
+            if (currentUser != null)
+            {
+                CmbUsers.ItemsSource = new[] { currentUser };
+                CmbUsers.SelectedItem = currentUser;
+            }
 
             List<int> _rating = new List<int>
             {

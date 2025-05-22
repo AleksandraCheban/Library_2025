@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Data.Entity;
 
 namespace Library_2025
 {
@@ -57,6 +58,11 @@ namespace Library_2025
             if (selectedOrder != null)
             {
                 _order = selectedOrder;
+                // Загружаем данные заказа
+                CmbBooks.SelectedItem = _order.Books;
+                TbQuantity.Text = _order.Quantity.ToString();
+                TbCost.Text = _order.Cost.ToString();
+                TbResult.Text = _order.Result.ToString();
             }
             else
             {
@@ -145,8 +151,15 @@ namespace Library_2025
                     _order.ID_users = selectedUser.ID_users;
                 }
 
-                Debug.WriteLine(_order.ID_orders);
-                _context.Orders.Add(_order);
+                if (_order.ID_orders == 0)
+                {
+                    _context.Orders.Add(_order);
+                }
+                else
+                {
+                    _context.Entry(_order).State = EntityState.Modified;
+                }
+
                 _context.SaveChanges();
                 MessageBox.Show("Данные успешно сохранены");
 
