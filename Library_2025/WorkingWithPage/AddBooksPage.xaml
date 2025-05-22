@@ -23,6 +23,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200" />
@@ -50,8 +51,19 @@
                 <TextBlock Text="Рейтинг" Grid.Row="6" Grid.Column="0" Margin="0,10,0,0"/>
                 <TextBox Name="TbRating" Text="{Binding Rating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Margin="0,10,0,0"/>
 
-                <Button Name="ButtonSave" Content="Сохранить" Grid.Row="7" Grid.Column="1" Width="133" Click="ButtonSave_OnClick" Background="White" Margin="0,20,0,0"/>
-                <Button Name="ButtonBack" Content="Назад" Grid.Row="7" Grid.Column="0" Width="133" Click="ButtonBack_OnClick" Background="White" Margin="0,20,0,0"/>
+                <TextBlock Text="URL изображения" Grid.Row="7" Grid.Column="0" Margin="0,10,0,0"/>
+                <TextBox Name="TbPhoto" Text="{Binding Photo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Margin="0,10,0,0"/>
+
+                <!-- Используем дополнительный Grid для кнопок -->
+                <Grid Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Name="ButtonBack" Content="Назад" Grid.Column="0" Width="133" Click="ButtonBack_OnClick" Background="White" Margin="0,20,0,0"/>
+                    <Button Name="ButtonSave" Content="Сохранить" Grid.Column="1" Width="133" Click="ButtonSave_OnClick" Background="White" Margin="0,20,0,0"/>
+                </Grid>
             </Grid>
         </Border>
     </Grid>

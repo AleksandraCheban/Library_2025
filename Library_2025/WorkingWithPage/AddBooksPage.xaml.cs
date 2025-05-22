@@ -72,6 +72,7 @@ namespace Library_2025
             _book.ID_publishers = (CmbPublishers.SelectedItem as Publishers).ID_publishers;
             _book.Costs = cost;
             _book.Rating = rating;
+            _book.Photo = TbPhoto.Text; // Сохранение URL изображения
 
             try
             {
@@ -92,6 +93,7 @@ namespace Library_2025
                 CmbPublishers.SelectedItem = null;
                 TbCost.Text = string.Empty;
                 TbRating.Text = string.Empty;
+                TbPhoto.Text = string.Empty;
 
                 NavigationService.GoBack();
             }

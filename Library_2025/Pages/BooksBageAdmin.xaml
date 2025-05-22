@@ -28,6 +28,13 @@
                         <DataGridTextColumn Header="Издатель" Binding="{Binding Publishers.Title}" />
                         <DataGridTextColumn Header="Стоимость" Binding="{Binding Costs}" />
                         <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}" />
+                        <DataGridTemplateColumn Header="Изображение">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Width="50" Height="50"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

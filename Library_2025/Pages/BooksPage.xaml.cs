@@ -32,6 +32,8 @@ namespace Library_2025
                 .ToList();
 
             DataGridProducts.ItemsSource = books;
+
+           
         }
 
         private void ButtonEdit_OnClick(object sender, RoutedEventArgs e)
