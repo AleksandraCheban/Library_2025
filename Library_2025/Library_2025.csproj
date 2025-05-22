@@ -81,6 +81,9 @@
     <Compile Include="Authors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AuthorsPage.xaml.cs">
+      <DependentUpon>AuthorsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Availability.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -90,8 +93,14 @@
     <Compile Include="Genres.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GenresPage.xaml.cs">
+      <DependentUpon>GenresPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Languages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LanguagesPage.xaml.cs">
+      <DependentUpon>LanguagesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -111,17 +120,14 @@
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="PayOrders.xaml.cs">
-      <DependentUpon>PayOrders.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Publishers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PublishersPage.xaml.cs">
+      <DependentUpon>PublishersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReaderCategories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Reports.xaml.cs">
-      <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reviews.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -186,11 +192,19 @@
     <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="PayOrders.xaml">
+    <Page Include="Pages\AuthorsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Reports.xaml">
+    <Page Include="Pages\GenresPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LanguagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PublishersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

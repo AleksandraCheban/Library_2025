@@ -70,7 +70,7 @@ namespace Library_2025
             var selectedOrder = DataGridOrders.SelectedItem as Orders;
             if (selectedOrder != null)
             {
-                NavigationService.Navigate(new AddForOrdersUsers(selectedOrder));
+                NavigationService.Navigate(new AddOrdersForAdmin(selectedOrder));
             }
         }
 

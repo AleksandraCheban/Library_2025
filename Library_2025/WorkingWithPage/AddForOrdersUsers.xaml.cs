@@ -63,13 +63,17 @@ namespace Library_2025
                 TbQuantity.Text = _order.Quantity.ToString();
                 TbCost.Text = _order.Cost.ToString();
                 TbResult.Text = _order.Result.ToString();
+
+                // Устанавливаем выбранную книгу и пользователя
+                SelectedBookCost = _order.Cost ?? 0; // Используем оператор ?? для предоставления значения по умолчанию
+                Quantity = _order.Quantity ?? 0; // Используем оператор ?? для предоставления значения по умолчанию
             }
             else
             {
                 _order = new Orders();
             }
 
-            DataContext = this;
+            DataContext = _order;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -165,7 +169,7 @@ namespace Library_2025
 
                 // Сброс формы после сохранения
                 _order = new Orders();
-                DataContext = this;
+                DataContext = _order;
                 CmbBooks.SelectedItem = null;
                 CmbUsers.SelectedItem = null;
                 TbQuantity.Text = string.Empty;

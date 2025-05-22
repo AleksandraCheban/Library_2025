@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Library_2025
 {
-    /// <summary>
-    /// Логика взаимодействия для PageForAdmin.xaml
-    /// </summary>
     public partial class PageForAdmin : Page
     {
         public PageForAdmin(Users user)
@@ -41,11 +38,25 @@ namespace Library_2025
             NavigationService.Navigate(new UsersPage());
         }
 
-        private void Reports_Click(object sender, RoutedEventArgs e)
+        private void Authors_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Reports());
+            NavigationService.Navigate(new AuthorsPage());
         }
 
+        private void Genres_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GenresPage());
+        }
+
+        private void Languages_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LanguagesPage());
+        }
+
+        private void Publishers_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PublishersPage());
+        }
 
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
