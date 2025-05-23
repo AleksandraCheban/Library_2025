@@ -99,15 +99,19 @@ namespace Library_2025
                 _order.Result = selectedBook.Costs.Value * Quantity;
             }
         }
-
+        /// <summary>
+        /// Данный метод выполянет вычисление итоговой суммы заказа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TbQuantity_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Попытка вычислить результат при изменении количества
+            
             if (int.TryParse(TbQuantity.Text, out int quantity) && quantity > 0)
             {
                 Quantity = quantity;
                 decimal result = quantity * SelectedBookCost;
-                TbResult.Text = result.ToString("F2"); // Формат с 2 знаками после запятой
+                TbResult.Text = result.ToString("F2"); 
                 _order.Result = result;
             }
             else

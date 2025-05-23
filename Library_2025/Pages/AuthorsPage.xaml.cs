@@ -12,7 +12,9 @@ namespace Library_2025
             InitializeComponent();
             LoadAuthors();
         }
-
+        /// <summary>
+        /// Загружает данные о авторах
+        /// </summary>
         private void LoadAuthors()
         {
             AuthorsDataGrid.ItemsSource = Library_2025Entities.GetContext().Authors

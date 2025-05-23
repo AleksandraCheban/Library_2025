@@ -97,7 +97,11 @@ namespace Library_2025
                 }
             }
         }
-
+        /// <summary>
+        /// Этот метод хеширует пароли
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns>Данны метод возращет зашифрованный пароль. Он отображется точками</returns>
         public static string GetHash(string password)
         {
             using (var hash = SHA1.Create())
